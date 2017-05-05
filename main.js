@@ -3,7 +3,7 @@ if (! ('WebAssembly' in window)) {
 	alert('you need a browser with wasm support enabled :(');
 }
 
-function loadWebAssembly(filename) {
+function loadWebAssembly(filename, import_funcs) {
 	return fetch(filename)
 		.then(response => response.arrayBuffer())
 		.then(buffer => WebAssembly.compile(buffer))
@@ -17,15 +17,22 @@ function loadWebAssembly(filename) {
 				}
 			};
 
-			imports.env['_Herp'] = function(derps) {
-				alert(derps);
-			};
+			// Copy the imported functions into the module
+			for (key in import_funcs) {
+				imports.env[key] = import_funcs[key];
+			}
 
 			return new WebAssembly.Instance(module, imports);
 		});
 }
 
-loadWebAssembly('main.wasm')
+const import_funcs = {
+	'_Herp': function(derps) {
+		alert(derps);
+	}
+};
+
+loadWebAssembly('main.wasm', import_funcs)
 	.then(instance => {
 		console.log(instance.exports);
 		let doubler = instance.exports._doubler;
