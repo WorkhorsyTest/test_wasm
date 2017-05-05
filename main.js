@@ -17,7 +17,7 @@ function loadWebAssembly(filename) {
 				}
 			};
 
-			imports.env['__Z4Herpi'] = function(derps) {
+			imports.env['_Herp'] = function(derps) {
 				alert(derps);
 			};
 
@@ -27,7 +27,8 @@ function loadWebAssembly(filename) {
 
 loadWebAssembly('main.wasm')
 	.then(instance => {
-		let doubler = instance.exports.__Z7doubleri;
+		console.log(instance.exports);
+		let doubler = instance.exports._doubler;
 
 		let button = document.getElementById('run');
 		button.value = 'Call a method in the WebAssembly module';

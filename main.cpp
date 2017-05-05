@@ -10,9 +10,9 @@ extern setInterval(int (*callback)());
 int runCallback(int (*callback)()) { return callback(); }
 */
 
-extern void Herp(int derps);
+extern "C" void Herp(int derps);
 
-int doubler(int x) {
+extern "C" int doubler(int x) {
 	Herp(x);
 	//printf("fuuuuuuuuuuu: %d\n", 76);
 	return 2 * x;
