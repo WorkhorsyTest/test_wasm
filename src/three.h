@@ -12,6 +12,7 @@
 using namespace std;
 
 class Clock;
+class Date;
 class Euler;
 class Matrix3;
 class Matrix4;
