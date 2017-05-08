@@ -1,19 +1,31 @@
 
+#include <stdio.h>
+#include <string>
+#include <stdlib.h>
+#include <vector>
+#include <sstream>
+#include <typeinfo>
+#include <assert.h>
+#include <array>
 
-//#include <stdio.h>
-/*
-extern print(char *message);
-extern jsClearRect(int x, int y, int width, int height);
-extern jsFillRect(int x, int y, int width, int height);
-extern setInterval(int (*callback)());
+using namespace std;
 
-int runCallback(int (*callback)()) { return callback(); }
-*/
+#include "Math.h"
+#include "matrix3.h"
+#include "matrix4.h"
+#include "vector3.h"
+#include "quaternion.h"
+#include "euler.h"
+#include "object_3d.h"
 
-extern "C" void Herp(int derps);
+int main(int argc, char ** argv) {
+	printf("Hello, world!\n");
 
-extern "C" int doubler(int x) {
-	Herp(x);
-	//printf("fuuuuuuuuuuu: %d\n", 76);
-	return 2 * x;
+	Vector3* v = new Vector3();
+	printf("x: %f\n", v->x);
+
+	vector<int> msg = { 1, 2, 3, 4, 5 };
+	for (int i=0; i<msg.size(); ++i) {
+		printf("msg: %d\n", msg[i]);
+	}
 }

@@ -1,2 +1,4 @@
-
-*.wasm
+images
+index.wasm
+index.js
+index.html
