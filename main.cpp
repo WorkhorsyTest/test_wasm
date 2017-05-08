@@ -1,5 +1,5 @@
 
-#include "three.h"
+#include "src/three.h"
 
 int main(int argc, char ** argv) {
 	printf("Hello, world!\n");
