@@ -71,3 +71,7 @@ bool Math::IsNaN(float x) noexcept {
 bool Math::IsInfinity(float x) noexcept {
 	return isfinite(x);
 }
+
+int Math::EuclideanModulo(int n, int m) {
+	return ( ( n % m ) + m ) % m;
+}

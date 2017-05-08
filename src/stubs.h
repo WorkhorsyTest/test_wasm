@@ -9,4 +9,9 @@ public:
 	static long Now();
 };
 
+class Object {
+public:
+	
+};
+
 #endif // _STUBS_H_

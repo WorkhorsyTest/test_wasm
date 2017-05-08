@@ -39,6 +39,8 @@ public:
 	static bool IsNaN(float x) noexcept;
 
 	static bool IsInfinity(float x) noexcept;
+
+	static int EuclideanModulo(int n, int m);
 };
 
 #endif // _MY_MATH_H_
