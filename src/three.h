@@ -11,6 +11,7 @@
 
 using namespace std;
 
+class Clock;
 class Euler;
 class Matrix3;
 class Matrix4;
@@ -19,6 +20,9 @@ class Vector3;
 class Object3D;
 
 #include "Math.h"
+#include "stubs.h"
+
+#include "clock.h"
 #include "matrix3.h"
 #include "matrix4.h"
 #include "vector3.h"
