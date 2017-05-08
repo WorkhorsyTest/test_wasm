@@ -2,22 +2,7 @@
 #ifndef _MATRIX4_H_
 #define _MATRIX4_H_
 
-class Euler;
-class Matrix3;
-class Matrix4;
-class Quaternion;
-class Vector3;
-
-class Object3D;
-
-#include "matrix3.h"
-//#include "matrix4.h"
-#include "vector3.h"
-#include "quaternion.h"
-#include "euler.h"
-#include "object_3d.h"
-
-using namespace std;
+#include "three.h"
 
 class Matrix4 {
 public:

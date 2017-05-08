@@ -2,27 +2,7 @@
 #ifndef _VECTOR3_H_
 #define _VECTOR3_H_
 
-#include <string>
-#include <stdlib.h>
-#include <vector>
-#include <sstream>
-
-class Euler;
-class Matrix3;
-class Matrix4;
-class Quaternion;
-class Vector3;
-
-class Object3D;
-
-#include "matrix3.h"
-#include "matrix4.h"
-//#include "vector3.h"
-#include "quaternion.h"
-#include "euler.h"
-#include "object_3d.h"
-
-using namespace std;
+#include "three.h"
 
 class Vector3 {
 public:

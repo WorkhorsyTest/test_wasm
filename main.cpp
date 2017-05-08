@@ -1,22 +1,5 @@
 
-#include <stdio.h>
-#include <string>
-#include <stdlib.h>
-#include <vector>
-#include <sstream>
-#include <typeinfo>
-#include <assert.h>
-#include <array>
-
-using namespace std;
-
-#include "Math.h"
-#include "matrix3.h"
-#include "matrix4.h"
-#include "vector3.h"
-#include "quaternion.h"
-#include "euler.h"
-#include "object_3d.h"
+#include "three.h"
 
 int main(int argc, char ** argv) {
 	printf("Hello, world!\n");

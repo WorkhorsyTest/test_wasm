@@ -1,18 +1,5 @@
 
-#include <string>
-#include <stdlib.h>
-#include <vector>
-#include <sstream>
-
-#include "matrix3.h"
-#include "matrix4.h"
-#include "vector3.h"
-#include "quaternion.h"
-#include "euler.h"
-#include "object_3d.h"
-#include "Math.h"
-
-using namespace std;
+#include "three.h"
 
 	Vector3::Vector3(float x, float y, float z) {
 		this->x = x;

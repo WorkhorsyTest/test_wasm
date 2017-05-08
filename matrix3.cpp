@@ -1,19 +1,7 @@
 
 
 
-#include <string>
-#include <stdlib.h>
-#include <vector>
-#include <sstream>
-
-#include "matrix3.h"
-#include "matrix4.h"
-#include "vector3.h"
-#include "quaternion.h"
-#include "euler.h"
-#include "object_3d.h"
-
-using namespace std;
+#include "three.h"
 
 	Matrix3::Matrix3() {
 		this->elements = {
