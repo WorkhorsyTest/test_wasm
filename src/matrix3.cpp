@@ -1,7 +1,7 @@
 
-
-
 #include "three.h"
+
+namespace THREE {
 
 	Matrix3::Matrix3() {
 		this->elements = {
@@ -15,7 +15,7 @@
 		//}
 	}
 
-	Matrix3* Matrix3::set(float n11, float n12, float n13, float n21, float n22, float n23, float n31, float n32, float n33) {
+	THREE::Matrix3* Matrix3::set(float n11, float n12, float n13, float n21, float n22, float n23, float n31, float n32, float n33) {
 		auto te = this->elements;
 
 		te[ 0 ] = n11; te[ 1 ] = n21; te[ 2 ] = n31;
@@ -25,7 +25,7 @@
 		return this;
 	}
 
-	Matrix3* Matrix3::identity() {
+	THREE::Matrix3* Matrix3::identity() {
 		this->set(
 			1, 0, 0,
 			0, 1, 0,
@@ -35,11 +35,11 @@
 		return this;
 	}
 
-	Matrix3* Matrix3::clone() {
+	THREE::Matrix3* Matrix3::clone() {
 		return (new Matrix3())->fromArray( this->elements );
 	}
 
-	Matrix3* Matrix3::copy(Matrix3* m ) {
+	THREE::Matrix3* Matrix3::copy(THREE::Matrix3* m ) {
 		auto te = this->elements;
 		auto me = m->elements;
 
@@ -50,7 +50,7 @@
 		return this;
 	}
 
-	Matrix3* Matrix3::setFromMatrix4(Matrix4* m ) {
+	THREE::Matrix3* Matrix3::setFromMatrix4(THREE::Matrix4* m ) {
 		auto me = m->elements;
 
 		this->set(
@@ -78,15 +78,15 @@
 		return attribute;
 	}
 */
-	Matrix3* Matrix3::multiply(Matrix3* m ) {
+	THREE::Matrix3* Matrix3::multiply(THREE::Matrix3* m ) {
 		return this->multiplyMatrices( this, m );
 	}
 
-	Matrix3* Matrix3::premultiply(Matrix3* m ) {
+	THREE::Matrix3* Matrix3::premultiply(THREE::Matrix3* m ) {
 		return this->multiplyMatrices( m, this );
 	}
 
-	Matrix3* Matrix3::multiplyMatrices(Matrix3* a, Matrix3* b ) {
+	THREE::Matrix3* Matrix3::multiplyMatrices(THREE::Matrix3* a, THREE::Matrix3* b ) {
 		auto ae = a->elements;
 		auto be = b->elements;
 		auto te = this->elements;
@@ -114,7 +114,7 @@
 		return this;
 	}
 
-	Matrix3* Matrix3::multiplyScalar(float s ) {
+	THREE::Matrix3* Matrix3::multiplyScalar(float s ) {
 		auto te = this->elements;
 
 		te[ 0 ] *= s; te[ 3 ] *= s; te[ 6 ] *= s;
@@ -140,11 +140,11 @@
 		return a * e * i - a * f * h - b * d * i + b * f * g + c * d * h - c * e * g;
 	}
 
-	Matrix3* Matrix3::getInverse(Matrix3* matrix) {
+	THREE::Matrix3* Matrix3::getInverse(THREE::Matrix3* matrix) {
 		return this->getInverse(matrix, false);
 	}
 
-	Matrix3* Matrix3::getInverse(Matrix3* matrix, bool throwOnDegenerate ) {
+	THREE::Matrix3* Matrix3::getInverse(THREE::Matrix3* matrix, bool throwOnDegenerate ) {
 		auto me = matrix->elements;
 		auto te = this->elements;
 
@@ -190,7 +190,7 @@
 		return this;
 	}
 
-	Matrix3* Matrix3::transpose() {
+	THREE::Matrix3* Matrix3::transpose() {
 		float tmp = 0;
 		auto m = this->elements;
 
@@ -201,11 +201,11 @@
 		return this;
 	}
 
-	Matrix3* Matrix3::getNormalMatrix(Matrix4* matrix4 ) {
+	THREE::Matrix3* Matrix3::getNormalMatrix(THREE::Matrix4* matrix4 ) {
 		return this->setFromMatrix4( matrix4 )->getInverse( this )->transpose();
 	}
 
-	Matrix3* Matrix3::transposeIntoArray(std::vector<float> &r) {
+	THREE::Matrix3* Matrix3::transposeIntoArray(std::vector<float> &r) {
 		auto m = this->elements;
 
 		r[ 0 ] = m[ 0 ];
@@ -221,7 +221,7 @@
 		return this;
 	}
 
-	bool Matrix3::equals(Matrix3* matrix ) {
+	bool Matrix3::equals(THREE::Matrix3* matrix ) {
 		auto te = this->elements;
 		auto me = matrix->elements;
 
@@ -232,11 +232,11 @@
 		return true;
 	}
 
-	Matrix3* Matrix3::fromArray(std::vector<float> arr) {
+	THREE::Matrix3* Matrix3::fromArray(std::vector<float> arr) {
 		return this->fromArray(arr, 0);
 	}
 
-	Matrix3* Matrix3::fromArray(std::vector<float> arr, int offset) {
+	THREE::Matrix3* Matrix3::fromArray(std::vector<float> arr, int offset) {
 		for ( int i = 0; i < 9; i ++ ) {
 			this->elements[ i ] = arr[ i + offset ];
 		}
@@ -264,3 +264,4 @@
 
 		return arr;
 	}
+};

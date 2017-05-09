@@ -4,17 +4,18 @@
 
 #include "three.h"
 
+namespace THREE {
 
 class Texture : public EventDispatcher {
 public:
 	static long textureId;
-	static Image* DEFAULT_IMAGE;
+	static THREE::Image* DEFAULT_IMAGE;
 	static int DEFAULT_MAPPING;
 	bool _value;
 	long id;
 	std::string uuid;
 	std::string name;
-	Image* image;
+	THREE::Image* image;
 	std::vector<int> mipmaps;
 	int mapping;
 	int wrapS;
@@ -24,8 +25,8 @@ public:
 	int anisotropy;
 	int format;
 	int type;
-	Vector2* offset;
-	Vector2* repeat;
+	THREE::Vector2* offset;
+	THREE::Vector2* repeat;
 	bool generateMipmaps;
 	bool premultiplyAlpha;
 	bool flipY;
@@ -36,19 +37,21 @@ public:
 
 	Texture();
 
-	Texture(Image* image, int mapping, int wrapS, int wrapT, int magFilter, int minFilter, int format, int type, int anisotropy, int encoding);
+	Texture(THREE::Image* image, int mapping, int wrapS, int wrapT, int magFilter, int minFilter, int format, int type, int anisotropy, int encoding);
 
 	void needsUpdate(bool value);
 
-	Texture* clone();
+	THREE::Texture* clone();
 
-	Texture* copy(Texture* source );
+	THREE::Texture* copy(THREE::Texture* source );
 
 	//toJSON( meta );
 
 	void dispose();
 
-	void transformUv(Vector2* uv );
+	void transformUv(THREE::Vector2* uv );
+};
+
 };
 
 #endif // _TEXTURE_H_

@@ -1,6 +1,7 @@
 
-
 #include "three.h"
+
+namespace THREE {
 
 const int EPSILON = Math::Pow( 2, - 52 );
 
@@ -18,7 +19,7 @@ const int EPSILON = Math::Pow( 2, - 52 );
 		this->_w = 1;
 	}
 
-	Quaternion* Quaternion::slerp(Quaternion* qa, Quaternion* qb, Quaternion* qm, float t ) {
+	THREE::Quaternion* Quaternion::slerp(THREE::Quaternion* qa, THREE::Quaternion* qb, THREE::Quaternion* qm, float t ) {
 		return qm->copy( qa )->slerp( qb, t );
 	}
 
@@ -109,7 +110,7 @@ const int EPSILON = Math::Pow( 2, - 52 );
 		this->onChangeCallback();
 	}
 
-	Quaternion* Quaternion::set(float x, float y, float z, float w ) {
+	THREE::Quaternion* Quaternion::set(float x, float y, float z, float w ) {
 		this->_x = x;
 		this->_y = y;
 		this->_z = z;
@@ -120,11 +121,11 @@ const int EPSILON = Math::Pow( 2, - 52 );
 		return this;
 	}
 
-	Quaternion* Quaternion::clone() {
+	THREE::Quaternion* Quaternion::clone() {
 		return new Quaternion( this->_x, this->_y, this->_z, this->_w );
 	}
 
-	Quaternion* Quaternion::copy(Quaternion* quaternion ) {
+	THREE::Quaternion* Quaternion::copy(THREE::Quaternion* quaternion ) {
 		this->_x = quaternion->x();
 		this->_y = quaternion->y();
 		this->_z = quaternion->z();
@@ -135,11 +136,11 @@ const int EPSILON = Math::Pow( 2, - 52 );
 		return this;
 	}
 
-	Quaternion* Quaternion::setFromEuler(Euler* euler) {
+	THREE::Quaternion* Quaternion::setFromEuler(THREE::Euler* euler) {
 		return this->setFromEuler(euler, false);
 	}
 
-	Quaternion* Quaternion::setFromEuler(Euler* euler, bool update ) {
+	THREE::Quaternion* Quaternion::setFromEuler(THREE::Euler* euler, bool update ) {
 		auto x = euler->_x;
 		auto y = euler->_y;
 		auto z = euler->_z;
@@ -193,7 +194,7 @@ const int EPSILON = Math::Pow( 2, - 52 );
 		return this;
 	}
 
-	Quaternion* Quaternion::setFromAxisAngle(Vector3* axis, float angle ) {
+	THREE::Quaternion* Quaternion::setFromAxisAngle(THREE::Vector3* axis, float angle ) {
 		// http://www.euclideanspace.com/maths/geometry/rotations/conversions/angleToQuaternion/index.htm
 
 		// assumes axis is normalized
@@ -210,7 +211,7 @@ const int EPSILON = Math::Pow( 2, - 52 );
 		return this;
 	}
 
-	Quaternion* Quaternion::setFromRotationMatrix(Matrix4* m ) {
+	THREE::Quaternion* Quaternion::setFromRotationMatrix(THREE::Matrix4* m ) {
 		// http://www.euclideanspace.com/maths/geometry/rotations/conversions/matrixToQuaternion/index.htm
 
 		// assumes the upper 3x3 of m is a pure rotation matrix (i.e, unscaled)
@@ -264,7 +265,7 @@ const int EPSILON = Math::Pow( 2, - 52 );
 		return this;
 	}
 
-	Quaternion* Quaternion::setFromUnitVectors(Vector3* vFrom, Vector3* vTo) {
+	THREE::Quaternion* Quaternion::setFromUnitVectors(THREE::Vector3* vFrom, THREE::Vector3* vTo) {
 		// assumes direction vectors vFrom and vTo are normalized
 		auto v1 = new Vector3();
 		float r;
@@ -294,11 +295,11 @@ const int EPSILON = Math::Pow( 2, - 52 );
 		return this->normalize();
 	}
 
-	Quaternion* Quaternion::inverse() {
+	THREE::Quaternion* Quaternion::inverse() {
 		return this->conjugate()->normalize();
 	}
 
-	Quaternion* Quaternion::conjugate() {
+	THREE::Quaternion* Quaternion::conjugate() {
 		this->_x *= - 1;
 		this->_y *= - 1;
 		this->_z *= - 1;
@@ -308,7 +309,7 @@ const int EPSILON = Math::Pow( 2, - 52 );
 		return this;
 	}
 
-	float Quaternion::dot(Quaternion* v ) {
+	float Quaternion::dot(THREE::Quaternion* v ) {
 		return this->_x * v->_x + this->_y * v->_y + this->_z * v->_z + this->_w * v->_w;
 	}
 
@@ -320,7 +321,7 @@ const int EPSILON = Math::Pow( 2, - 52 );
 		return Math::Sqrt( this->_x * this->_x + this->_y * this->_y + this->_z * this->_z + this->_w * this->_w );
 	}
 
-	Quaternion* Quaternion::normalize() {
+	THREE::Quaternion* Quaternion::normalize() {
 		auto l = this->length();
 
 		if ( l == 0 ) {
@@ -342,11 +343,11 @@ const int EPSILON = Math::Pow( 2, - 52 );
 		return this;
 	}
 
-	Quaternion* Quaternion::multiply(Quaternion* q) {
+	THREE::Quaternion* Quaternion::multiply(THREE::Quaternion* q) {
 		return this->multiplyQuaternions(this, nullptr);
 	}
 
-	Quaternion* Quaternion::multiply(Quaternion* q, Quaternion* p ) {
+	THREE::Quaternion* Quaternion::multiply(THREE::Quaternion* q, THREE::Quaternion* p ) {
 		if ( p != nullptr ) {
 			//console.warn( 'THREE.Quaternion: .multiply() now only accepts one argument. Use .multiplyQuaternions( a, b ) instead.' );
 			return this->multiplyQuaternions( q, p );
@@ -355,11 +356,11 @@ const int EPSILON = Math::Pow( 2, - 52 );
 		return this->multiplyQuaternions( this, q );
 	}
 
-	Quaternion* Quaternion::premultiply(Quaternion* q ) {
+	THREE::Quaternion* Quaternion::premultiply(THREE::Quaternion* q ) {
 		return this->multiplyQuaternions( q, this );
 	}
 
-	Quaternion* Quaternion::multiplyQuaternions(Quaternion* a, Quaternion* b ) {
+	THREE::Quaternion* Quaternion::multiplyQuaternions(THREE::Quaternion* a, THREE::Quaternion* b ) {
 		// from http://www.euclideanspace.com/maths/algebra/realNormedAlgebra/quaternions/code/index.htm
 		auto qax = a->_x; auto qay = a->_y; auto qaz = a->_z; auto qaw = a->_w;
 		auto qbx = b->_x; auto qby = b->_y; auto qbz = b->_z; auto qbw = b->_w;
@@ -374,7 +375,7 @@ const int EPSILON = Math::Pow( 2, - 52 );
 		return this;
 	}
 
-	Quaternion* Quaternion::slerp(Quaternion* qb, float t ) {
+	THREE::Quaternion* Quaternion::slerp(THREE::Quaternion* qb, float t ) {
 		if ( t == 0 ) return this;
 		if ( t == 1 ) return this->copy( qb );
 
@@ -427,15 +428,15 @@ const int EPSILON = Math::Pow( 2, - 52 );
 		return this;
 	}
 
-	bool Quaternion::equals(Quaternion* quaternion ) {
+	bool Quaternion::equals(THREE::Quaternion* quaternion ) {
 		return ( quaternion->_x == this->_x ) && ( quaternion->_y == this->_y ) && ( quaternion->_z == this->_z ) && ( quaternion->_w == this->_w );
 	}
 
-	Quaternion* Quaternion::fromArray(std::vector<float> arr) {
+	THREE::Quaternion* Quaternion::fromArray(std::vector<float> arr) {
 		return this->fromArray(arr, 0);
 	}
 
-	Quaternion* Quaternion::fromArray(std::vector<float> arr, int offset ) {
+	THREE::Quaternion* Quaternion::fromArray(std::vector<float> arr, int offset ) {
 		this->_x = arr[ offset ];
 		this->_y = arr[ offset + 1 ];
 		this->_z = arr[ offset + 2 ];
@@ -458,10 +459,11 @@ const int EPSILON = Math::Pow( 2, - 52 );
 		return arr;
 	}
 /*
-	Quaternion* onChange( callback ) {
+	THREE::Quaternion* onChange( callback ) {
 		this->onChangeCallback = callback;
 
 		return this;
 	}
 */
 	void Quaternion::onChangeCallback() {}
+};

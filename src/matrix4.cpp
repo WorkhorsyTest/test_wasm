@@ -1,6 +1,7 @@
 
-
 #include "three.h"
+
+namespace THREE {
 
 Matrix4::Matrix4() {
 	this->elements = {
@@ -15,7 +16,7 @@ Matrix4::Matrix4() {
 	//}
 }
 
-Matrix4* Matrix4::set(float n11, float n12, float n13, float n14, float n21, float n22, float n23, float n24, float n31, float n32, float n33, float n34, float n41, float n42, float n43, float n44) {
+THREE::Matrix4* Matrix4::set(float n11, float n12, float n13, float n14, float n21, float n22, float n23, float n24, float n31, float n32, float n33, float n34, float n41, float n42, float n43, float n44) {
 	auto te = this->elements;
 
 	te[ 0 ] = n11; te[ 4 ] = n12; te[ 8 ] = n13; te[ 12 ] = n14;
@@ -26,7 +27,7 @@ Matrix4* Matrix4::set(float n11, float n12, float n13, float n14, float n21, flo
 	return this;
 }
 
-Matrix4* Matrix4::identity() {
+THREE::Matrix4* Matrix4::identity() {
 	this->set(
 		1, 0, 0, 0,
 		0, 1, 0, 0,
@@ -37,11 +38,11 @@ Matrix4* Matrix4::identity() {
 	return this;
 }
 
-Matrix4* Matrix4::clone() {
+THREE::Matrix4* Matrix4::clone() {
 	return (new Matrix4())->fromArray( this->elements );
 }
 
-Matrix4* Matrix4::copy(Matrix4*  m) {
+THREE::Matrix4* Matrix4::copy(THREE::Matrix4*  m) {
 	auto te = this->elements;
 	auto me = m->elements;
 
@@ -53,7 +54,7 @@ Matrix4* Matrix4::copy(Matrix4*  m) {
 	return this;
 }
 
-Matrix4* Matrix4::copyPosition(Matrix4*  m) {
+THREE::Matrix4* Matrix4::copyPosition(THREE::Matrix4*  m) {
 	auto te = this->elements;
 	auto me = m->elements;
 
@@ -64,7 +65,7 @@ Matrix4* Matrix4::copyPosition(Matrix4*  m) {
 	return this;
 }
 
-Matrix4* Matrix4::extractBasis(Vector3* xAxis, Vector3* yAxis, Vector3* zAxis) {
+THREE::Matrix4* Matrix4::extractBasis(THREE::Vector3* xAxis, THREE::Vector3* yAxis, THREE::Vector3* zAxis) {
 	xAxis->setFromMatrixColumn( this, 0 );
 	yAxis->setFromMatrixColumn( this, 1 );
 	zAxis->setFromMatrixColumn( this, 2 );
@@ -72,7 +73,7 @@ Matrix4* Matrix4::extractBasis(Vector3* xAxis, Vector3* yAxis, Vector3* zAxis) {
 	return this;
 }
 
-Matrix4* Matrix4::makeBasis(Vector3* xAxis, Vector3* yAxis, Vector3* zAxis) {
+THREE::Matrix4* Matrix4::makeBasis(THREE::Vector3* xAxis, THREE::Vector3* yAxis, THREE::Vector3* zAxis) {
 	this->set(
 		xAxis->x, yAxis->x, zAxis->x, 0,
 		xAxis->y, yAxis->y, zAxis->y, 0,
@@ -83,7 +84,7 @@ Matrix4* Matrix4::makeBasis(Vector3* xAxis, Vector3* yAxis, Vector3* zAxis) {
 	return this;
 }
 
-Matrix4* Matrix4::extractRotation(Matrix4* m) {
+THREE::Matrix4* Matrix4::extractRotation(THREE::Matrix4* m) {
 	auto v1 = new Vector3();
 
 	auto te = this->elements;
@@ -108,7 +109,7 @@ Matrix4* Matrix4::extractRotation(Matrix4* m) {
 	return this;
 }
 
-Matrix4* Matrix4::makeRotationFromEuler(Euler* euler) {
+THREE::Matrix4* Matrix4::makeRotationFromEuler(THREE::Euler* euler) {
 	auto te = this->elements;
 
 	auto x = euler->x();
@@ -221,7 +222,7 @@ Matrix4* Matrix4::makeRotationFromEuler(Euler* euler) {
 	return this;
 }
 
-Matrix4* Matrix4::makeRotationFromQuaternion(Quaternion* q) {
+THREE::Matrix4* Matrix4::makeRotationFromQuaternion(THREE::Quaternion* q) {
 	auto te = this->elements;
 
 	auto x = q->_x; auto y = q->_y; auto z = q->_z; auto w = q->_w;
@@ -256,7 +257,7 @@ Matrix4* Matrix4::makeRotationFromQuaternion(Quaternion* q) {
 	return this;
 }
 
-Matrix4* Matrix4::lookAt(Vector3* eye, Vector3* target, Vector3* up) {
+THREE::Matrix4* Matrix4::lookAt(THREE::Vector3* eye, THREE::Vector3* target, THREE::Vector3* up) {
 	auto x = new Vector3();
 	auto y = new Vector3();
 	auto z = new Vector3();
@@ -291,7 +292,7 @@ Matrix4* Matrix4::lookAt(Vector3* eye, Vector3* target, Vector3* up) {
 	return this;
 }
 
-Matrix4* Matrix4::multiply(Matrix4* m, Matrix4* n) {
+THREE::Matrix4* Matrix4::multiply(THREE::Matrix4* m, THREE::Matrix4* n) {
 	if ( n != nullptr) {
 		//console.warn( 'THREE.Matrix4: .multiply() now only accepts one argument. Use .multiplyMatrices( a, b ) instead.' );
 		return this->multiplyMatrices( m, n );
@@ -300,11 +301,11 @@ Matrix4* Matrix4::multiply(Matrix4* m, Matrix4* n) {
 	return this->multiplyMatrices( this, m );
 }
 
-Matrix4* Matrix4::premultiply(Matrix4* m) {
+THREE::Matrix4* Matrix4::premultiply(THREE::Matrix4* m) {
 	return this->multiplyMatrices( m, this );
 }
 
-Matrix4* Matrix4::multiplyMatrices(Matrix4* a, Matrix4* b) {
+THREE::Matrix4* Matrix4::multiplyMatrices(THREE::Matrix4* a, THREE::Matrix4* b) {
 	auto ae = a->elements;
 	auto be = b->elements;
 	auto te = this->elements;
@@ -342,7 +343,7 @@ Matrix4* Matrix4::multiplyMatrices(Matrix4* a, Matrix4* b) {
 	return this;
 }
 
-Matrix4* Matrix4::multiplyScalar(float s) {
+THREE::Matrix4* Matrix4::multiplyScalar(float s) {
 	auto te = this->elements;
 
 	te[ 0 ] *= s; te[ 4 ] *= s; te[ 8 ] *= s; te[ 12 ] *= s;
@@ -415,7 +416,7 @@ float Matrix4::determinant() {
 	);
 }
 
-Matrix4* Matrix4::transpose() {
+THREE::Matrix4* Matrix4::transpose() {
 	auto te = this->elements;
 	float tmp = 0;
 
@@ -430,7 +431,7 @@ Matrix4* Matrix4::transpose() {
 	return this;
 }
 
-Matrix4* Matrix4::setPosition(Vector3* v) {
+THREE::Matrix4* Matrix4::setPosition(THREE::Vector3* v) {
 	auto te = this->elements;
 
 	te[ 12 ] = v->x;
@@ -440,11 +441,11 @@ Matrix4* Matrix4::setPosition(Vector3* v) {
 	return this;
 }
 
-Matrix4* Matrix4::getInverse(Matrix4* m) {
+THREE::Matrix4* Matrix4::getInverse(THREE::Matrix4* m) {
 	return this->getInverse(m, false);
 }
 
-Matrix4* Matrix4::getInverse(Matrix4* m, bool throwOnDegenerate) {
+THREE::Matrix4* Matrix4::getInverse(THREE::Matrix4* m, bool throwOnDegenerate) {
 	// based on http://www.euclideanspace.com/maths/algebra/matrix/functions/inverse/fourD/index.htm
 	auto te = this->elements;
 	auto me = m->elements;
@@ -496,7 +497,7 @@ Matrix4* Matrix4::getInverse(Matrix4* m, bool throwOnDegenerate) {
 	return this;
 }
 
-Matrix4* Matrix4::scale(Vector3* v) {
+THREE::Matrix4* Matrix4::scale(THREE::Vector3* v) {
 	auto te = this->elements;
 	auto x = v->x;
 	auto y = v->y;
@@ -520,7 +521,7 @@ float Matrix4::getMaxScaleOnAxis() {
 	return Math::Sqrt( Math::Max( scaleXSq, scaleYSq, scaleZSq ) );
 }
 
-Matrix4* Matrix4::makeTranslation(float x, float y, float z) {
+THREE::Matrix4* Matrix4::makeTranslation(float x, float y, float z) {
 	this->set(
 		1, 0, 0, x,
 		0, 1, 0, y,
@@ -531,7 +532,7 @@ Matrix4* Matrix4::makeTranslation(float x, float y, float z) {
 	return this;
 }
 
-Matrix4* Matrix4::makeRotationX(float theta) {
+THREE::Matrix4* Matrix4::makeRotationX(float theta) {
 	auto c = Math::Cos( theta ), s = Math::Sin( theta );
 
 	this->set(
@@ -544,7 +545,7 @@ Matrix4* Matrix4::makeRotationX(float theta) {
 	return this;
 }
 
-Matrix4* Matrix4::makeRotationY(float theta) {
+THREE::Matrix4* Matrix4::makeRotationY(float theta) {
 	auto c = Math::Cos( theta ), s = Math::Sin( theta );
 
 	this->set(
@@ -557,7 +558,7 @@ Matrix4* Matrix4::makeRotationY(float theta) {
 	return this;
 }
 
-Matrix4* Matrix4::makeRotationZ(float theta) {
+THREE::Matrix4* Matrix4::makeRotationZ(float theta) {
 	auto c = Math::Cos( theta ), s = Math::Sin( theta );
 
 	this->set(
@@ -570,7 +571,7 @@ Matrix4* Matrix4::makeRotationZ(float theta) {
 	return this;
 }
 
-Matrix4* Matrix4::makeRotationAxis(Vector3* axis, float angle) {
+THREE::Matrix4* Matrix4::makeRotationAxis(THREE::Vector3* axis, float angle) {
 	// Based on http://www.gamedev.net/reference/articles/article1199.asp
 	auto c = Math::Cos( angle );
 	auto s = Math::Sin( angle );
@@ -591,7 +592,7 @@ Matrix4* Matrix4::makeRotationAxis(Vector3* axis, float angle) {
 	 return this;
 }
 
-Matrix4* Matrix4::makeScale(float x, float y, float z) {
+THREE::Matrix4* Matrix4::makeScale(float x, float y, float z) {
 	this->set(
 		x, 0, 0, 0,
 		0, y, 0, 0,
@@ -602,7 +603,7 @@ Matrix4* Matrix4::makeScale(float x, float y, float z) {
 	return this;
 }
 
-Matrix4* Matrix4::makeShear(float x, float y, float z) {
+THREE::Matrix4* Matrix4::makeShear(float x, float y, float z) {
 	this->set(
 		1, y, z, 0,
 		x, 1, z, 0,
@@ -613,7 +614,7 @@ Matrix4* Matrix4::makeShear(float x, float y, float z) {
 	return this;
 }
 
-Matrix4* Matrix4::compose(Vector3* position, Quaternion* quaternion, Vector3* scale) {
+THREE::Matrix4* Matrix4::compose(THREE::Vector3* position, THREE::Quaternion* quaternion, THREE::Vector3* scale) {
 	this->makeRotationFromQuaternion( quaternion );
 	this->scale( scale );
 	this->setPosition( position );
@@ -621,7 +622,7 @@ Matrix4* Matrix4::compose(Vector3* position, Quaternion* quaternion, Vector3* sc
 	return this;
 }
 
-Matrix4* Matrix4::decompose(Vector3* position, Quaternion* quaternion, Vector3* scale) {
+THREE::Matrix4* Matrix4::decompose(THREE::Vector3* position, THREE::Quaternion* quaternion, THREE::Vector3* scale) {
 	auto vector = new Vector3();
 	auto matrix = new Matrix4();
 
@@ -667,7 +668,7 @@ Matrix4* Matrix4::decompose(Vector3* position, Quaternion* quaternion, Vector3* 
 	return this;
 }
 
-Matrix4* Matrix4::makePerspective(float left, float right, float top, float bottom, float near, float far) {
+THREE::Matrix4* Matrix4::makePerspective(float left, float right, float top, float bottom, float near, float far) {
 	auto te = this->elements;
 	auto x = 2 * near / ( right - left );
 	auto y = 2 * near / ( top - bottom );
@@ -685,7 +686,7 @@ Matrix4* Matrix4::makePerspective(float left, float right, float top, float bott
 	return this;
 }
 
-Matrix4* Matrix4::makeOrthographic(float left, float right, float top, float bottom, float near, float far) {
+THREE::Matrix4* Matrix4::makeOrthographic(float left, float right, float top, float bottom, float near, float far) {
 	auto te = this->elements;
 	auto w = 1.0 / ( right - left );
 	auto h = 1.0 / ( top - bottom );
@@ -703,7 +704,7 @@ Matrix4* Matrix4::makeOrthographic(float left, float right, float top, float bot
 	return this;
 }
 
-bool Matrix4::equals(Matrix4* matrix) {
+bool Matrix4::equals(THREE::Matrix4* matrix) {
 	auto te = this->elements;
 	auto me = matrix->elements;
 
@@ -714,11 +715,11 @@ bool Matrix4::equals(Matrix4* matrix) {
 	return true;
 }
 
-Matrix4* Matrix4::fromArray(std::vector<float> &array) {
+THREE::Matrix4* Matrix4::fromArray(std::vector<float> &array) {
 	return this->fromArray(array, 0);
 }
 
-Matrix4* Matrix4::fromArray(std::vector<float> &array, int offset) {
+THREE::Matrix4* Matrix4::fromArray(std::vector<float> &array, int offset) {
 	for ( int i = 0; i < 16; i ++) {
 		this->elements[ i ] = array[ i + offset ];
 	}
@@ -754,3 +755,5 @@ std::vector<float> Matrix4::toArray(std::vector<float> &array, int offset) {
 
 	return array;
 }
+
+};

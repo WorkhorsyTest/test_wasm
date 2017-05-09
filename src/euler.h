@@ -4,6 +4,7 @@
 
 #include "three.h"
 
+namespace THREE {
 
 class Euler {
 public:
@@ -37,33 +38,35 @@ public:
 
 	void order(std::string value );
 
-	Euler* set(float x, float y, float z, std::string order );
+	THREE::Euler* set(float x, float y, float z, std::string order );
 
-	Euler* clone();
+	THREE::Euler* clone();
 
-	Euler* copy(Euler* euler );
+	THREE::Euler* copy(THREE::Euler* euler );
 
-	Euler* setFromRotationMatrix(Matrix4* m, std::string order, bool update );
+	THREE::Euler* setFromRotationMatrix(THREE::Matrix4* m, std::string order, bool update );
 
-	Euler* setFromQuaternion(Quaternion* q, std::string order);
+	THREE::Euler* setFromQuaternion(THREE::Quaternion* q, std::string order);
 
-	Euler* setFromQuaternion(Quaternion* q, std::string order, bool update );
+	THREE::Euler* setFromQuaternion(THREE::Quaternion* q, std::string order, bool update );
 
-	Euler* setFromVector3(Vector3* v, std::string order );
+	THREE::Euler* setFromVector3(THREE::Vector3* v, std::string order );
 
-	Euler* reorder(std::string newOrder);
+	THREE::Euler* reorder(std::string newOrder);
 
-	bool equals(Euler* euler );
+	bool equals(THREE::Euler* euler );
 
-	Euler* fromArray(std::vector<float> arr);
+	THREE::Euler* fromArray(std::vector<float> arr);
 
 	std::vector<float> toArray(std::vector<float> arr, int offset );
 
-	Vector3* toVector3(Vector3* optionalResult );
+	THREE::Vector3* toVector3(THREE::Vector3* optionalResult );
 /*
-	Euler* onChange( callback );
+	THREE::Euler* onChange( callback );
 */
 	void onChangeCallback();
+};
+
 };
 
 #endif // _EULER_H_

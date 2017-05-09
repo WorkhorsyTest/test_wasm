@@ -1,8 +1,11 @@
 
-
+#include <string>
+#include <math.h>
 
 #include "Math.h"
-#include <math.h>
+
+namespace THREE {
+
 
 const float Math::PI = M_PI;
 
@@ -118,3 +121,5 @@ std::string Math::generateUUID() {
 	}
 	return std::string(uuid);
 }
+
+};

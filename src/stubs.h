@@ -4,6 +4,8 @@
 
 #include "three.h"
 
+namespace THREE {
+
 class Date {
 public:
 	static long Now();
@@ -16,6 +18,8 @@ public:
 class Object {
 public:
 	Object* clone();
+};
+
 };
 
 #endif // _STUBS_H_

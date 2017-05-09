@@ -1,27 +1,28 @@
 
-
 #include "three.h"
 
-Vector3* Object3D::DefaultUp = new Vector3( 0, 1, 0 );
+namespace THREE {
+
+THREE::Vector3* Object3D::DefaultUp = new Vector3( 0, 1, 0 );
 bool Object3D::DefaultMatrixAutoUpdate = true;
 int Object3D::object3DId = 0;
 
-Vector3* Object3D::position() {
+THREE::Vector3* Object3D::position() {
 	return this->_position;
 }
-Euler* Object3D::rotation() {
+THREE::Euler* Object3D::rotation() {
 	return this->_rotation;
 }
-Quaternion* Object3D::quaternion() {
+THREE::Quaternion* Object3D::quaternion() {
 	return this->_quaternion;
 }
-Vector3* Object3D::scale() {
+THREE::Vector3* Object3D::scale() {
 	return this->_scale;
 }
-Matrix4* Object3D::modelViewMatrix() {
+THREE::Matrix4* Object3D::modelViewMatrix() {
 	return this->_modelViewMatrix;
 }
-Matrix3* Object3D::normalMatrix() {
+THREE::Matrix3* Object3D::normalMatrix() {
 	return this->_normalMatrix;
 }
 
@@ -80,31 +81,31 @@ Object3D::Object3D() : EventDispatcher() {
 */
 }
 
-void Object3D::applyMatrix(Matrix4* matrix ) {
+void Object3D::applyMatrix(THREE::Matrix4* matrix ) {
 	this->matrix->multiplyMatrices( matrix, this->matrix );
 	this->matrix->decompose( this->position(), this->quaternion(), this->scale() );
 }
 
-void Object3D::setRotationFromAxisAngle(Vector3* axis, float angle ) {
+void Object3D::setRotationFromAxisAngle(THREE::Vector3* axis, float angle ) {
 	// assumes axis is normalized
 	this->quaternion()->setFromAxisAngle( axis, angle );
 }
 
-void Object3D::setRotationFromEuler(Euler* euler ) {
+void Object3D::setRotationFromEuler(THREE::Euler* euler ) {
 	this->quaternion()->setFromEuler( euler, true );
 }
 
-void Object3D::setRotationFromMatrix(Matrix4* m ) {
+void Object3D::setRotationFromMatrix(THREE::Matrix4* m ) {
 	// assumes the upper 3x3 of m is a pure rotation matrix (i.e, unscaled)
 	this->quaternion()->setFromRotationMatrix( m );
 }
 
-void Object3D::setRotationFromQuaternion(Quaternion* q ) {
+void Object3D::setRotationFromQuaternion(THREE::Quaternion* q ) {
 	// assumes q is normalized
 	this->quaternion()->copy( q );
 }
 
-Object3D* Object3D::rotateOnAxis(Vector3* axis, float angle) {
+THREE::Object3D* Object3D::rotateOnAxis(THREE::Vector3* axis, float angle) {
 	// rotate object on axis in object space
 	// axis is assumed to be normalized
 	auto q1 = new Quaternion();
@@ -113,22 +114,22 @@ Object3D* Object3D::rotateOnAxis(Vector3* axis, float angle) {
 	return this;
 }
 
-Object3D* Object3D::rotateX(float angle) {
+THREE::Object3D* Object3D::rotateX(float angle) {
 	auto v1 = new Vector3( 1, 0, 0 );
 	return this->rotateOnAxis( v1, angle );
 }
 
-Object3D* Object3D::rotateY(float angle) {
+THREE::Object3D* Object3D::rotateY(float angle) {
 	auto v1 = new Vector3( 0, 1, 0 );
 	return this->rotateOnAxis( v1, angle );
 }
 
-Object3D* Object3D::rotateZ(float angle) {
+THREE::Object3D* Object3D::rotateZ(float angle) {
 	auto v1 = new Vector3( 0, 0, 1 );
 	return this->rotateOnAxis( v1, angle );
 }
 
-Object3D* Object3D::translateOnAxis(Vector3* axis, float distance) {
+THREE::Object3D* Object3D::translateOnAxis(THREE::Vector3* axis, float distance) {
 	// translate object by distance along axis in object space
 	// axis is assumed to be normalized
 	auto v1 = new Vector3();
@@ -137,31 +138,31 @@ Object3D* Object3D::translateOnAxis(Vector3* axis, float distance) {
 	return this;
 }
 
-Object3D* Object3D::translateX(float distance) {
+THREE::Object3D* Object3D::translateX(float distance) {
 	auto v1 = new Vector3( 1, 0, 0 );
 	return this->translateOnAxis( v1, distance );
 }
 
-Object3D* Object3D::translateY(float distance) {
+THREE::Object3D* Object3D::translateY(float distance) {
 	auto v1 = new Vector3( 0, 1, 0 );
 	return this->translateOnAxis( v1, distance );
 }
 
-Object3D* Object3D::translateZ(float distance) {
+THREE::Object3D* Object3D::translateZ(float distance) {
 	auto v1 = new Vector3( 0, 0, 1 );
 	return this->translateOnAxis( v1, distance );
 }
 
-Vector3* Object3D::localToWorld(Vector3* vector ) {
+THREE::Vector3* Object3D::localToWorld(THREE::Vector3* vector ) {
 	return vector->applyMatrix4( this->matrixWorld );
 }
 
-Vector3* Object3D::worldToLocal(Vector3* vector) {
+THREE::Vector3* Object3D::worldToLocal(THREE::Vector3* vector) {
 	auto m1 = new Matrix4();
 	return vector->applyMatrix4( m1->getInverse( this->matrixWorld ) );
 }
 
-void Object3D::lookAt(Vector3* vector) {
+void Object3D::lookAt(THREE::Vector3* vector) {
 	// This routine does not support objects with rotated and/or translated parent(s)
 	auto m1 = new Matrix4();
 //	if ( this->isCamera ) {
@@ -172,7 +173,7 @@ void Object3D::lookAt(Vector3* vector) {
 	this->quaternion()->setFromRotationMatrix( m1 );
 }
 
-Object3D* Object3D::add(Object3D* object ) {
+THREE::Object3D* Object3D::add(THREE::Object3D* object ) {
 //	if ( arguments.length > 1 ) {
 //		for ( int i = 0; i < arguments.length; i ++ ) {
 //			this->add( arguments[ i ] );
@@ -201,7 +202,7 @@ Object3D* Object3D::add(Object3D* object ) {
 	return this;
 }
 
-void Object3D::remove(Object3D* object ) {
+void Object3D::remove(THREE::Object3D* object ) {
 //	if ( arguments.length > 1 ) {
 //		for ( int i = 0; i < arguments.length; i ++ ) {
 //			this->remove( arguments[ i ] );
@@ -211,9 +212,9 @@ void Object3D::remove(Object3D* object ) {
 	auto iter = std::find_if(
 		this->children.begin(),
 		this->children.end(),
-		[object](Object3D* other) { return object == other; }
+		[object](THREE::Object3D* other) { return object == other; }
 	);
-	size_t index = std::distance(this->children.begin(), iter);
+	int index = std::distance(this->children.begin(), iter);
 	if (index != this->children.size()) {
 		object->parent = nullptr;
 
@@ -223,15 +224,15 @@ void Object3D::remove(Object3D* object ) {
 	}
 }
 /*
-Object3D* Object3D::getObjectById(int id ) {
+THREE::Object3D* Object3D::getObjectById(int id ) {
 	return this->getObjectByProperty( "id", id );
 }
 
-Object3D* Object3D::getObjectByName(std::string name ) {
+THREE::Object3D* Object3D::getObjectByName(std::string name ) {
 	return this->getObjectByProperty( "name", name );
 }
 
-Object3D* Object3D::getObjectByProperty(std::string name, std::string value ) {
+THREE::Object3D* Object3D::getObjectByProperty(std::string name, std::string value ) {
 	if ( this[ name ] == value ) return this;
 
 	for ( auto i = 0, l = this->children.length; i < l; i ++ ) {
@@ -246,15 +247,15 @@ Object3D* Object3D::getObjectByProperty(std::string name, std::string value ) {
 	return nullptr;
 }
 */
-Vector3* Object3D::getWorldPosition(Vector3* optionalTarget ) {
-	Vector3* result = (optionalTarget ? optionalTarget : new Vector3());
+THREE::Vector3* Object3D::getWorldPosition(THREE::Vector3* optionalTarget ) {
+	THREE::Vector3* result = (optionalTarget ? optionalTarget : new Vector3());
 
 	this->updateMatrixWorld( true );
 
 	return result->setFromMatrixPosition( this->matrixWorld );
 }
 
-Quaternion* Object3D::getWorldQuaternion(Quaternion* optionalTarget) {
+THREE::Quaternion* Object3D::getWorldQuaternion(THREE::Quaternion* optionalTarget) {
 	auto position = new Vector3();
 	auto scale = new Vector3();
 
@@ -267,7 +268,7 @@ Quaternion* Object3D::getWorldQuaternion(Quaternion* optionalTarget) {
 	return result;
 }
 
-Euler* Object3D::getWorldRotation(Euler* optionalTarget) {
+THREE::Euler* Object3D::getWorldRotation(THREE::Euler* optionalTarget) {
 	auto quaternion = new Quaternion();
 
 	auto result = (optionalTarget ? optionalTarget : new Euler());
@@ -277,7 +278,7 @@ Euler* Object3D::getWorldRotation(Euler* optionalTarget) {
 	return result->setFromQuaternion( quaternion, this->rotation()->order(), false );
 }
 
-Vector3* Object3D::getWorldScale(Vector3* optionalTarget) {
+THREE::Vector3* Object3D::getWorldScale(THREE::Vector3* optionalTarget) {
 	auto position = new Vector3();
 	auto quaternion = new Quaternion();
 
@@ -290,7 +291,7 @@ Vector3* Object3D::getWorldScale(Vector3* optionalTarget) {
 	return result;
 }
 
-Vector3* Object3D::getWorldDirection(Vector3* optionalTarget) {
+THREE::Vector3* Object3D::getWorldDirection(THREE::Vector3* optionalTarget) {
 	auto quaternion = new Quaternion();
 
 	auto result = (optionalTarget ? optionalTarget : new Vector3());
@@ -472,19 +473,19 @@ Object3D::toJSON( meta ) {
 	}
 }
 */
-Object3D* Object3D::clone() {
+THREE::Object3D* Object3D::clone() {
 	return (new Object3D())->copy( this, false );
 }
 
-Object3D* Object3D::clone(bool recursive ) {
+THREE::Object3D* Object3D::clone(bool recursive ) {
 	return (new Object3D())->copy( this, recursive );
 }
 
-Object3D* Object3D::copy(Object3D* source) {
+THREE::Object3D* Object3D::copy(THREE::Object3D* source) {
 	return copy(source, true);
 }
 
-Object3D* Object3D::copy(Object3D* source, bool recursive ) {
+THREE::Object3D* Object3D::copy(THREE::Object3D* source, bool recursive ) {
 	this->name = source->name;
 
 	this->up->copy( source->up );
@@ -519,3 +520,5 @@ Object3D* Object3D::copy(Object3D* source, bool recursive ) {
 
 	return this;
 }
+
+};

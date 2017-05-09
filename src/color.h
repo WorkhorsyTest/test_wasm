@@ -4,6 +4,9 @@
 #define _COLOR_H_
 
 #include "three.h"
+
+namespace THREE {
+
 /*
 var ColorKeywords = { 'aliceblue': 0xF0F8FF, 'antiquewhite': 0xFAEBD7, 'aqua': 0x00FFFF, 'aquamarine': 0x7FFFD4, 'azure': 0xF0FFFF,
 	'beige': 0xF5F5DC, 'bisque': 0xFFE4C4, 'black': 0x000000, 'blanchedalmond': 0xFFEBCD, 'blue': 0x0000FF, 'blueviolet': 0x8A2BE2,
@@ -52,33 +55,33 @@ public:
 
 	Color(float r);
 
-	Color* set(Color* value );
+	THREE::Color* set(THREE::Color* value );
 
-	Color* set(int value );
+	THREE::Color* set(int value );
 
-	Color* set(std::string value );
+	THREE::Color* set(std::string value );
 
-	Color* setScalar(float scalar );
+	THREE::Color* setScalar(float scalar );
 
-	Color* setHex(int hex );
+	THREE::Color* setHex(int hex );
 
-	Color* setRGB(float r, float g, float b);
+	THREE::Color* setRGB(float r, float g, float b);
 
-	Color* setHSL(float h, float s, float l);
+	THREE::Color* setHSL(float h, float s, float l);
 
-	Color* setStyle(std::string style );
+	THREE::Color* setStyle(std::string style );
 
-	Color* clone();
+	THREE::Color* clone();
 
-	Color* copy(Color* color );
+	THREE::Color* copy(THREE::Color* color );
 
-	Color* copyGammaToLinear(Color* color, float gammaFactor );
+	THREE::Color* copyGammaToLinear(THREE::Color* color, float gammaFactor );
 
-	Color* copyLinearToGamma(Color* color, float gammaFactor );
+	THREE::Color* copyLinearToGamma(THREE::Color* color, float gammaFactor );
 
-	Color* convertGammaToLinear();
+	THREE::Color* convertGammaToLinear();
 
-	Color* convertLinearToGamma();
+	THREE::Color* convertLinearToGamma();
 
 	int getHex();
 
@@ -88,30 +91,32 @@ public:
 
 	std::string getStyle();
 
-	Color* offsetHSL(float h, float s, float l);
+	THREE::Color* offsetHSL(float h, float s, float l);
 
-	Color* add(Color* color );
+	THREE::Color* add(THREE::Color* color );
 
-	Color* addColors(Color* color1, Color* color2 );
+	THREE::Color* addColors(THREE::Color* color1, THREE::Color* color2 );
 
-	Color* addScalar(float s);
+	THREE::Color* addScalar(float s);
 
-	Color* sub(Color* color );
+	THREE::Color* sub(THREE::Color* color );
 
-	Color* multiply(Color* color );
+	THREE::Color* multiply(THREE::Color* color );
 
-	Color* multiplyScalar(float s );
+	THREE::Color* multiplyScalar(float s );
 
-	Color* lerp(Color* color, float alpha);
+	THREE::Color* lerp(THREE::Color* color, float alpha);
 
-	bool equals(Color* c );
+	bool equals(THREE::Color* c );
 
-	Color* fromArray(std::vector<float> array, int offset);
+	THREE::Color* fromArray(std::vector<float> array, int offset);
 
 	std::vector<float> toArray(std::vector<float> array, int offset );
 /*
 	toJSON();
 */
+};
+
 };
 
 #endif // _COLOR_H_

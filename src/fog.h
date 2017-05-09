@@ -4,11 +4,13 @@
 
 #include "three.h"
 
+namespace THREE {
+
 class Fog {
 public:
 	bool isFog;
 	std::string name;
-	Color* color;
+	THREE::Color* color;
 	float near;
 	float far;
 
@@ -16,10 +18,12 @@ public:
 
 	Fog(int color, float near, float far);
 
-	Fog* clone();
+	THREE::Fog* clone();
 /*
 	std::string toJSON( meta );
 */
+};
+
 };
 
 #endif // _FOG_H_

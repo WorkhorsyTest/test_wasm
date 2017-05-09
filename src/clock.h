@@ -4,6 +4,8 @@
 
 #include "three.h"
 
+namespace THREE {
+
 class Clock {
 public:
 	bool autoStart;
@@ -23,6 +25,8 @@ public:
 	long getElapsedTime();
 
 	long getDelta();
+};
+
 };
 
 #endif // _CLOCK_H_

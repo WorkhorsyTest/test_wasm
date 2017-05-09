@@ -4,6 +4,8 @@
 
 #include "three.h"
 
+namespace THREE {
+
 class Quaternion {
 public:
 	float _x;
@@ -15,7 +17,7 @@ public:
 
 	Quaternion();
 
-	Quaternion* slerp(Quaternion* qa, Quaternion* qb, Quaternion* qm, float t );
+	THREE::Quaternion* slerp(THREE::Quaternion* qa, THREE::Quaternion* qb, THREE::Quaternion* qm, float t );
 
 	void slerpFlat(float dst[], int dstOffset, float src0[], int srcOffset0, float src1[], int srcOffset1, float t );
 
@@ -31,55 +33,57 @@ public:
 	float w();
 	void w(float value );
 
-	Quaternion* set(float x, float y, float z, float w );
+	THREE::Quaternion* set(float x, float y, float z, float w );
 
-	Quaternion* clone();
+	THREE::Quaternion* clone();
 
-	Quaternion* copy(Quaternion* quaternion );
+	THREE::Quaternion* copy(THREE::Quaternion* quaternion );
 
-	Quaternion* setFromEuler(Euler* euler);
+	THREE::Quaternion* setFromEuler(THREE::Euler* euler);
 
-	Quaternion* setFromEuler(Euler* euler, bool update );
+	THREE::Quaternion* setFromEuler(THREE::Euler* euler, bool update );
 
-	Quaternion* setFromAxisAngle(Vector3* axis, float angle );
+	THREE::Quaternion* setFromAxisAngle(THREE::Vector3* axis, float angle );
 
-	Quaternion* setFromRotationMatrix(Matrix4* m );
+	THREE::Quaternion* setFromRotationMatrix(THREE::Matrix4* m );
 
-	Quaternion* setFromUnitVectors(Vector3* vFrom, Vector3* vTo);
+	THREE::Quaternion* setFromUnitVectors(THREE::Vector3* vFrom, THREE::Vector3* vTo);
 
-	Quaternion* inverse();
+	THREE::Quaternion* inverse();
 
-	Quaternion* conjugate();
+	THREE::Quaternion* conjugate();
 
-	float dot(Quaternion* v );
+	float dot(THREE::Quaternion* v );
 
 	float lengthSq();
 
 	int length();
 
-	Quaternion* normalize();
+	THREE::Quaternion* normalize();
 
-	Quaternion* multiply(Quaternion* q);
+	THREE::Quaternion* multiply(THREE::Quaternion* q);
 
-	Quaternion* multiply(Quaternion* q, Quaternion* p );
+	THREE::Quaternion* multiply(THREE::Quaternion* q, THREE::Quaternion* p );
 
-	Quaternion* premultiply(Quaternion* q );
+	THREE::Quaternion* premultiply(THREE::Quaternion* q );
 
-	Quaternion* multiplyQuaternions(Quaternion* a, Quaternion* b );
+	THREE::Quaternion* multiplyQuaternions(THREE::Quaternion* a, THREE::Quaternion* b );
 
-	Quaternion* slerp(Quaternion* qb, float t );
+	THREE::Quaternion* slerp(THREE::Quaternion* qb, float t );
 
-	bool equals(Quaternion* quaternion );
+	bool equals(THREE::Quaternion* quaternion );
 
-	Quaternion* fromArray(std::vector<float> arr);
+	THREE::Quaternion* fromArray(std::vector<float> arr);
 
-	Quaternion* fromArray(std::vector<float> arr, int offset );
+	THREE::Quaternion* fromArray(std::vector<float> arr, int offset );
 
 	std::vector<float> toArray(std::vector<float> arr, int offset );
 /*
-	Quaternion* onChange( callback );
+	THREE::Quaternion* onChange( callback );
 */
 	void onChangeCallback();
+};
+
 };
 
 #endif // _QUATERNION_H_

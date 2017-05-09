@@ -1,6 +1,4 @@
 
-//namespace THREE {
-
 #include <stdio.h>
 #include <string>
 #include <stdlib.h>
@@ -12,24 +10,26 @@
 #include <array>
 #include <regex>
 
-class Object;
+namespace THREE {
+	class Object;
 
-class Clock;
-class Color;
-class Date;
-class Euler;
-struct Event;
-class EventDispatcher;
-class Fog;
-class Matrix3;
-class Matrix4;
-class Quaternion;
-class Vector2;
-class Vector3;
-class Scene;
-class Object3D;
-class Image;
-class Texture;
+	class Clock;
+	class Color;
+	class Date;
+	class Euler;
+	struct Event;
+	class EventDispatcher;
+	class Fog;
+	class Matrix3;
+	class Matrix4;
+	class Quaternion;
+	class Vector2;
+	class Vector3;
+	class Scene;
+	class Object3D;
+	class Image;
+	class Texture;
+};
 
 #include "event.h"
 #include "event_dispatcher.h"
@@ -49,5 +49,3 @@ class Texture;
 #include "scene.h"
 #include "texture.h"
 #include "object_3d.h"
-
-//};

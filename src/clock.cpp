@@ -1,6 +1,7 @@
 
-
 #include "three.h"
+
+namespace THREE {
 
 Clock::Clock() : Clock(true) {
 }
@@ -52,3 +53,5 @@ long Clock::getDelta() {
 
 	return diff;
 }
+
+};

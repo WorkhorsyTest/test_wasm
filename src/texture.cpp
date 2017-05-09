@@ -1,9 +1,10 @@
 
-
 #include "three.h"
 
+namespace THREE {
+
 long Texture::textureId = 0;
-Image* Texture::DEFAULT_IMAGE = nullptr;
+THREE::Image* Texture::DEFAULT_IMAGE = nullptr;
 int Texture::DEFAULT_MAPPING = UVMapping;
 
 Texture::Texture() :
@@ -20,7 +21,7 @@ Texture::Texture() :
 		LinearEncoding) {
 }
 
-Texture::Texture(Image* image, int mapping, int wrapS, int wrapT, int magFilter, int minFilter, int format, int type, int anisotropy, int encoding)
+Texture::Texture(THREE::Image* image, int mapping, int wrapS, int wrapT, int magFilter, int minFilter, int format, int type, int anisotropy, int encoding)
 : EventDispatcher() {
 	this->id = textureId++;
 	this->uuid = Math::generateUUID();
@@ -67,11 +68,11 @@ void Texture::needsUpdate(bool value) {
 	}
 }
 
-Texture* Texture::clone() {
+THREE::Texture* Texture::clone() {
 	return (new Texture())->copy( this );
 }
 
-Texture* Texture::copy(Texture* source ) {
+THREE::Texture* Texture::copy(THREE::Texture* source ) {
 	this->name = source->name;
 
 	this->image = source->image;
@@ -177,7 +178,7 @@ void Texture::dispose() {
 		this->dispatchEvent( Event("dispose") );
 }
 
-void Texture::transformUv(Vector2* uv ) {
+void Texture::transformUv(THREE::Vector2* uv ) {
 	if ( this->mapping != UVMapping ) return;
 
 	uv->multiply( this->repeat );
@@ -223,3 +224,5 @@ void Texture::transformUv(Vector2* uv ) {
 		uv->y = 1 - uv->y;
 	}
 }
+
+};

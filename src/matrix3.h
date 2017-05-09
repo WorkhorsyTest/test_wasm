@@ -4,6 +4,8 @@
 
 #include "three.h"
 
+namespace THREE {
+
 class Matrix3 {
 public:
 	std::vector<float> elements;
@@ -11,45 +13,47 @@ public:
 
 	Matrix3();
 
-	Matrix3* set(float n11, float n12, float n13, float n21, float n22, float n23, float n31, float n32, float n33);
+	THREE::Matrix3* set(float n11, float n12, float n13, float n21, float n22, float n23, float n31, float n32, float n33);
 
-	Matrix3* identity();
+	THREE::Matrix3* identity();
 
-	Matrix3* clone();
+	THREE::Matrix3* clone();
 
-	Matrix3* copy(Matrix3* m );
+	THREE::Matrix3* copy(THREE::Matrix3* m );
 
-	Matrix3* setFromMatrix4(Matrix4* m );
+	THREE::Matrix3* setFromMatrix4(THREE::Matrix4* m );
 
 	//BufferAttribute* applyToBufferAttribute(BufferAttribute* attribute);
 
-	Matrix3* multiply(Matrix3* m );
+	THREE::Matrix3* multiply(THREE::Matrix3* m );
 
-	Matrix3* premultiply(Matrix3* m );
+	THREE::Matrix3* premultiply(THREE::Matrix3* m );
 
-	Matrix3* multiplyMatrices(Matrix3* a, Matrix3* b );
+	THREE::Matrix3* multiplyMatrices(THREE::Matrix3* a, THREE::Matrix3* b );
 
-	Matrix3* multiplyScalar(float s );
+	THREE::Matrix3* multiplyScalar(float s );
 
 	float determinant();
 
-	Matrix3* getInverse(Matrix3* matrix);
+	THREE::Matrix3* getInverse(THREE::Matrix3* matrix);
 
-	Matrix3* getInverse(Matrix3* matrix, bool throwOnDegenerate );
+	THREE::Matrix3* getInverse(THREE::Matrix3* matrix, bool throwOnDegenerate );
 
-	Matrix3* transpose();
+	THREE::Matrix3* transpose();
 
-	Matrix3* getNormalMatrix(Matrix4* matrix4 );
+	THREE::Matrix3* getNormalMatrix(THREE::Matrix4* matrix4 );
 
-	Matrix3* transposeIntoArray(std::vector<float> &r);
+	THREE::Matrix3* transposeIntoArray(std::vector<float> &r);
 
-	bool equals(Matrix3* matrix );
+	bool equals(THREE::Matrix3* matrix );
 
-	Matrix3* fromArray(std::vector<float> arr);
+	THREE::Matrix3* fromArray(std::vector<float> arr);
 
-	Matrix3* fromArray(std::vector<float> arr, int offset);
+	THREE::Matrix3* fromArray(std::vector<float> arr, int offset);
 
 	std::vector<float> toArray(std::vector<float> arr, int offset);
+};
+
 };
 
 #endif // _MATRIX3_H_

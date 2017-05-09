@@ -1,6 +1,7 @@
 
-
 #include "three.h"
+
+namespace THREE {
 
 float Color::hue2rgb(float p, float q, float t) {
 	if ( t < 0 ) t += 1;
@@ -28,22 +29,22 @@ Color::Color(float r) {
 	this->set( r );
 }
 
-Color* Color::set(Color* value ) {
+THREE::Color* Color::set(THREE::Color* value ) {
 	this->copy( value );
 	return this;
 }
 
-Color* Color::set(int value ) {
+THREE::Color* Color::set(int value ) {
 	this->setHex( value );
 	return this;
 }
 
-Color* Color::set(std::string value ) {
+THREE::Color* Color::set(std::string value ) {
 	this->setStyle( value );
 	return this;
 }
 
-Color* Color::setScalar(float scalar ) {
+THREE::Color* Color::setScalar(float scalar ) {
 	this->r = scalar;
 	this->g = scalar;
 	this->b = scalar;
@@ -51,7 +52,7 @@ Color* Color::setScalar(float scalar ) {
 	return this;
 }
 
-Color* Color::setHex(int hex ) {
+THREE::Color* Color::setHex(int hex ) {
 	hex = Math::Floor( hex );
 
 	this->r = ( hex >> 16 & 255 ) / 255;
@@ -61,7 +62,7 @@ Color* Color::setHex(int hex ) {
 	return this;
 }
 
-Color* Color::setRGB(float r, float g, float b) {
+THREE::Color* Color::setRGB(float r, float g, float b) {
 	this->r = r;
 	this->g = g;
 	this->b = b;
@@ -69,7 +70,7 @@ Color* Color::setRGB(float r, float g, float b) {
 	return this;
 }
 
-Color* Color::setHSL(float h, float s, float l) {
+THREE::Color* Color::setHSL(float h, float s, float l) {
 	// h,s,l ranges are in 0.0 - 1.0
 	h = Math::EuclideanModulo( h, 1 );
 	s = Math::Clamp( s, 0, 1 );
@@ -89,7 +90,7 @@ Color* Color::setHSL(float h, float s, float l) {
 	return this;
 }
 
-Color* Color::setStyle(std::string style ) {
+THREE::Color* Color::setStyle(std::string style ) {
 /*
 	std::string m;
 
@@ -177,11 +178,11 @@ Color* Color::setStyle(std::string style ) {
 	return this;
 }
 
-Color* Color::clone() {
+THREE::Color* Color::clone() {
 	return new Color( this->r, this->g, this->b );
 }
 
-Color* Color::copy(Color* color ) {
+THREE::Color* Color::copy(THREE::Color* color ) {
 	this->r = color->r;
 	this->g = color->g;
 	this->b = color->b;
@@ -189,7 +190,7 @@ Color* Color::copy(Color* color ) {
 	return this;
 }
 
-Color* Color::copyGammaToLinear(Color* color, float gammaFactor ) {
+THREE::Color* Color::copyGammaToLinear(THREE::Color* color, float gammaFactor ) {
 //			if ( gammaFactor == undefined ) gammaFactor = 2.0;
 
 	this->r = Math::Pow( color->r, gammaFactor );
@@ -199,7 +200,7 @@ Color* Color::copyGammaToLinear(Color* color, float gammaFactor ) {
 	return this;
 }
 
-Color* Color::copyLinearToGamma(Color* color, float gammaFactor ) {
+THREE::Color* Color::copyLinearToGamma(THREE::Color* color, float gammaFactor ) {
 //			if ( gammaFactor == undefined ) gammaFactor = 2.0;
 	float safeInverse = ( gammaFactor > 0 ) ? ( 1.0 / gammaFactor ) : 1.0;
 
@@ -210,7 +211,7 @@ Color* Color::copyLinearToGamma(Color* color, float gammaFactor ) {
 	return this;
 }
 
-Color* Color::convertGammaToLinear() {
+THREE::Color* Color::convertGammaToLinear() {
 	float r = this->r, g = this->g, b = this->b;
 
 	this->r = r * r;
@@ -220,7 +221,7 @@ Color* Color::convertGammaToLinear() {
 	return this;
 }
 
-Color* Color::convertLinearToGamma() {
+THREE::Color* Color::convertLinearToGamma() {
 	this->r = Math::Sqrt( this->r );
 	this->g = Math::Sqrt( this->g );
 	this->b = Math::Sqrt( this->b );
@@ -279,14 +280,14 @@ std::string Color::getStyle() {
 	return ss.str();
 }
 
-Color* Color::offsetHSL(float h, float s, float l) {
+THREE::Color* Color::offsetHSL(float h, float s, float l) {
 	HSL* hsl = this->getHSL(nullptr);
 	hsl->h += h; hsl->s += s; hsl->l += l;
 	this->setHSL( hsl->h, hsl->s, hsl->l );
 	return this;
 }
 
-Color* Color::add(Color* color ) {
+THREE::Color* Color::add(THREE::Color* color ) {
 	this->r += color->r;
 	this->g += color->g;
 	this->b += color->b;
@@ -294,7 +295,7 @@ Color* Color::add(Color* color ) {
 	return this;
 }
 
-Color* Color::addColors(Color* color1, Color* color2 ) {
+THREE::Color* Color::addColors(THREE::Color* color1, THREE::Color* color2 ) {
 	this->r = color1->r + color2->r;
 	this->g = color1->g + color2->g;
 	this->b = color1->b + color2->b;
@@ -302,7 +303,7 @@ Color* Color::addColors(Color* color1, Color* color2 ) {
 	return this;
 }
 
-Color* Color::addScalar(float s) {
+THREE::Color* Color::addScalar(float s) {
 	this->r += s;
 	this->g += s;
 	this->b += s;
@@ -310,7 +311,7 @@ Color* Color::addScalar(float s) {
 	return this;
 }
 
-Color* Color::sub(Color* color ) {
+THREE::Color* Color::sub(THREE::Color* color ) {
 	this->r = Math::Max( 0, this->r - color->r );
 	this->g = Math::Max( 0, this->g - color->g );
 	this->b = Math::Max( 0, this->b - color->b );
@@ -318,7 +319,7 @@ Color* Color::sub(Color* color ) {
 	return this;
 }
 
-Color* Color::multiply(Color* color ) {
+THREE::Color* Color::multiply(THREE::Color* color ) {
 	this->r *= color->r;
 	this->g *= color->g;
 	this->b *= color->b;
@@ -326,7 +327,7 @@ Color* Color::multiply(Color* color ) {
 	return this;
 }
 
-Color* Color::multiplyScalar(float s ) {
+THREE::Color* Color::multiplyScalar(float s ) {
 	this->r *= s;
 	this->g *= s;
 	this->b *= s;
@@ -334,7 +335,7 @@ Color* Color::multiplyScalar(float s ) {
 	return this;
 }
 
-Color* Color::lerp(Color* color, float alpha) {
+THREE::Color* Color::lerp(THREE::Color* color, float alpha) {
 	this->r += ( color->r - this->r ) * alpha;
 	this->g += ( color->g - this->g ) * alpha;
 	this->b += ( color->b - this->b ) * alpha;
@@ -342,11 +343,11 @@ Color* Color::lerp(Color* color, float alpha) {
 	return this;
 }
 
-bool Color::equals(Color* c ) {
+bool Color::equals(THREE::Color* c ) {
 	return ( c->r == this->r ) && ( c->g == this->g ) && ( c->b == this->b );
 }
 
-Color* Color::fromArray(std::vector<float> array, int offset) {
+THREE::Color* Color::fromArray(std::vector<float> array, int offset) {
 //			if ( offset == undefined ) offset = 0;
 
 	this->r = array[ offset ];
@@ -371,3 +372,4 @@ Color::toJSON() {
 	return this->getHex();
 }
 */
+};

@@ -2,6 +2,8 @@
 #ifndef _GLOBALS_H_
 #define _GLOBALS_H_
 
+namespace THREE {
+
 const std::string REVISION = "85";
 //const int MOUSE = { LEFT: 0, MIDDLE: 1, RIGHT: 2 };
 const int CullFaceNone = 0;
@@ -127,5 +129,7 @@ const int RGBM16Encoding = 3005;
 const int RGBDEncoding = 3006;
 const int BasicDepthPacking = 3200;
 const int RGBADepthPacking = 3201;
+
+};
 
 #endif // _GLOBALS_H_

@@ -4,6 +4,8 @@
 
 #include "three.h"
 
+namespace THREE {
+
 class Math {
 public:
 	static const float PI;
@@ -51,6 +53,8 @@ public:
 	static bool IsFloat(const std::string &s);
 
 	static std::string generateUUID();
+};
+
 };
 
 #endif // _MY_MATH_H_

@@ -1,7 +1,7 @@
 
-
-
 #include "three.h"
+
+namespace THREE {
 
 Scene::Scene() : Object3D() {
 	this->type = "Scene";
@@ -13,7 +13,7 @@ Scene::Scene() : Object3D() {
 	this->autoUpdate = true; // checked by the renderer
 }
 
-Scene* Scene::copy(Scene* source, bool recursive ) {
+THREE::Scene* Scene::copy(THREE::Scene* source, bool recursive ) {
 	Object3D::copy(source, recursive );
 
 	if ( source->background != nullptr ) this->background = source->background->clone();
@@ -35,3 +35,4 @@ std::string Scene::toJSON( meta ) {
 	return data;
 }
 */
+};

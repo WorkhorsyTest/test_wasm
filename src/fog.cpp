@@ -1,8 +1,7 @@
 
-
-
 #include "three.h"
 
+namespace THREE {
 
 Fog::Fog(int color) : Fog(color, 1, 1000) {
 }
@@ -15,7 +14,7 @@ Fog::Fog(int color, float near, float far) {
 	this->far = far;
 }
 
-Fog* Fog::clone() {
+THREE::Fog* Fog::clone() {
 	return new Fog(this->color->getHex(), this->near, this->far);
 }
 /*
@@ -28,3 +27,5 @@ std::string Fog::toJSON( meta ) {
 	};
 }
 */
+
+};

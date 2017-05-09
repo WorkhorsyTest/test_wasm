@@ -1,9 +1,9 @@
 
+#include "event_dispatcher.h"
 
-#include "three.h"
+namespace THREE {
 
-
-void EventDispatcher::addEventListener(std::string type, void (*listener)(Event)) {
+void EventDispatcher::addEventListener(std::string type, void (*listener)(THREE::Event)) {
 //		if ( this->_listeners == nullptr ) this->_listeners = {};
 
 	auto listeners = this->_listeners;
@@ -19,7 +19,7 @@ void EventDispatcher::addEventListener(std::string type, void (*listener)(Event)
 	}
 }
 
-bool EventDispatcher::hasEventListener(std::string type, void (*listener)(Event)) {
+bool EventDispatcher::hasEventListener(std::string type, void (*listener)(THREE::Event)) {
 //		if ( this->_listeners == nullptr ) return false;
 
 	auto listeners = this->_listeners;
@@ -33,7 +33,7 @@ bool EventDispatcher::hasEventListener(std::string type, void (*listener)(Event)
 	return (std::find(v.begin(), v.end(), listener) != v.end());
 }
 
-void EventDispatcher::removeEventListener(std::string type, void (*listener)(Event)) {
+void EventDispatcher::removeEventListener(std::string type, void (*listener)(THREE::Event)) {
 //		if ( this->_listeners == nullptr ) return;
 
 	auto listeners = this->_listeners;
@@ -49,7 +49,7 @@ void EventDispatcher::removeEventListener(std::string type, void (*listener)(Eve
 	}
 }
 
-void EventDispatcher::dispatchEvent( Event event ) {
+void EventDispatcher::dispatchEvent( THREE::Event event ) {
 //		if ( this->_listeners == nullptr ) return;
 
 	auto listeners = this->_listeners;
@@ -61,12 +61,14 @@ void EventDispatcher::dispatchEvent( Event event ) {
 	auto v = listeners[event.type];
 	event.target = this;
 
-	std::vector<void (*)(Event)> arr;
-	for (size_t i=0; i<v.size(); ++i) {
+	std::vector<void (*)(THREE::Event)> arr;
+	for (int i=0; i<v.size(); ++i) {
 		arr.push_back(v[i]);
 	}
 
-	for (size_t i=0; i<arr.size(); ++i) {
+	for (int i=0; i<arr.size(); ++i) {
 		arr[i](event);
 	}
 }
+
+};
