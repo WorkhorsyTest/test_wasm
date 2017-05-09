@@ -9,6 +9,10 @@ public:
 	static long Now();
 };
 
+class Image {
+public:
+};
+
 class Object {
 public:
 	Object* clone();

@@ -26,9 +26,12 @@ class Vector2;
 class Vector3;
 class Scene;
 class Object3D;
+class Image;
+class Texture;
 
 #include "Math.h"
 #include "stubs.h"
+#include "globals.h"
 
 #include "clock.h"
 #include "color.h"
@@ -40,4 +43,5 @@ class Object3D;
 #include "quaternion.h"
 #include "euler.h"
 #include "scene.h"
+#include "texture.h"
 #include "object_3d.h"
