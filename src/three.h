@@ -8,6 +8,7 @@
 #include <typeinfo>
 #include <assert.h>
 #include <array>
+#include <regex>
 
 using namespace std;
 

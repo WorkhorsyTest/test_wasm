@@ -2,7 +2,7 @@
 #ifndef _MY_MATH_H_
 #define _MY_MATH_H_
 
-#include "Math.h"
+#include "three.h"
 
 class Math {
 public:
@@ -43,6 +43,10 @@ public:
 	static bool IsInfinity(float x) noexcept;
 
 	static int EuclideanModulo(int n, int m);
+
+	static bool IsInteger(const string & s);
+
+	static bool IsFloat(const string &s);
 };
 
 #endif // _MY_MATH_H_

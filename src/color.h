@@ -46,6 +46,8 @@ public:
 
 	static float hue2rgb(float p, float q, float t);
 
+	static void handleAlpha(string value);
+
 	Color(float r, float g, float b);
 
 	Color(float r);

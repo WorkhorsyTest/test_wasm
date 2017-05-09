@@ -80,3 +80,18 @@ bool Math::IsInfinity(float x) noexcept {
 int Math::EuclideanModulo(int n, int m) {
 	return ( ( n % m ) + m ) % m;
 }
+
+bool Math::IsInteger(const string &s) {
+	if(s.empty() || ((!isdigit(s[0])) && (s[0] != '-') && (s[0] != '+'))) return false;
+	char * p ;
+	strtol(s.c_str(), &p, 10);
+	return (*p == 0);
+}
+
+bool Math::IsFloat(const string &s) {
+	std::istringstream iss(s);
+	float f;
+	iss >> noskipws >> f; // noskipws considers leading whitespace invalid
+	// Check the entire string was consumed and if either failbit or badbit is set
+	return iss.eof() && !iss.fail();
+}
