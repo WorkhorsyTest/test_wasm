@@ -49,6 +49,8 @@ public:
 	static bool IsInteger(const string & s);
 
 	static bool IsFloat(const string &s);
+
+	static string generateUUID();
 };
 
 #endif // _MY_MATH_H_

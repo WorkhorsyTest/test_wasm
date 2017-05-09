@@ -22,7 +22,7 @@ Texture::Texture() :
 
 Texture::Texture(Image* image, int mapping, int wrapS, int wrapT, int magFilter, int minFilter, int format, int type, int anisotropy, int encoding) {
 	this->id = textureId++;
-//	this->uuid = generateUUID();
+	this->uuid = Math::generateUUID();
 	this->name = "";
 
 	this->image = (image ? image : Texture::DEFAULT_IMAGE);
@@ -154,7 +154,7 @@ Texture::toJSON( meta ) {
 		var image = this->image;
 
 		if ( image.uuid == undefined ) {
-			image.uuid = _Math.generateUUID(); // UGH
+			image.uuid = Math::generateUUID(); // UGH
 		}
 
 		if ( meta.images[ image.uuid ] == undefined ) {
