@@ -8,17 +8,22 @@ float Math::Min(float a, float b) noexcept {
 	return (a < b ? a : b);
 }
 
+float Math::Min(float a, float b, float c) noexcept {
+	return Min(Min(a, b), c);
+}
+
 float Math::Max(float a, float b) noexcept {
 	return (a > b ? a : b);
+}
+
+float Math::Max(float a, float b, float c) noexcept {
+	return Max(Max(a, b), c);
 }
 
 float Math::Clamp(float value, float min, float max) noexcept {
 	return Max(min, Min(max, value));
 }
 
-float Math::Max(float a, float b, float c) noexcept {
-	return Max(Max(a, b), c);
-}
 
 float Math::Asin(float x) noexcept {
 	return asin(x);

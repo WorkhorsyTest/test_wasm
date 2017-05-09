@@ -233,53 +233,54 @@ int Color::getHex() {
 }
 
 string Color::getHexString() {
-	return ( "000000" + this->getHex().toString( 16 ) ).slice( - 6 );
+	return "";//( "000000" + this->getHex().toString( 16 ) ).slice( - 6 );
 }
-/*
-Object* Color::getHSL(Object* optionalTarget ) {
+
+HSL* Color::getHSL(HSL* optionalTarget ) {
 	// h,s,l ranges are in 0.0 - 1.0
-	var hsl = optionalTarget || { h: 0, s: 0, l: 0 };
+	HSL* hsl = (optionalTarget ? optionalTarget : new HSL());
 
-	var r = this->r, g = this->g, b = this->b;
+	float r = this->r, g = this->g, b = this->b;
 
-	var max = Math::Max( r, g, b );
-	var min = Math::Min( r, g, b );
+	float max = Math::Max( r, g, b );
+	float min = Math::Min( r, g, b );
 
-	var hue, saturation;
-	var lightness = ( min + max ) / 2.0;
+	float hue = 0;
+	float saturation = 0;
+	float lightness = ( min + max ) / 2.0;
 
 	if ( min == max ) {
 		hue = 0;
 		saturation = 0;
 	} else {
-		var delta = max - min;
+		float delta = max - min;
 
 		saturation = lightness <= 0.5 ? delta / ( max + min ) : delta / ( 2 - max - min );
 
-		switch ( max ) {
-			case r: hue = ( g - b ) / delta + ( g < b ? 6 : 0 ); break;
-			case g: hue = ( b - r ) / delta + 2; break;
-			case b: hue = ( r - g ) / delta + 4; break;
-		}
+		if (max == r) hue = ( g - b ) / delta + ( g < b ? 6 : 0 );
+		else if (max == g) hue = ( b - r ) / delta + 2;
+		else if (max == b) hue = ( r - g ) / delta + 4;
 
 		hue /= 6;
 	}
 
-	hsl.h = hue;
-	hsl.s = saturation;
-	hsl.l = lightness;
+	hsl->h = hue;
+	hsl->s = saturation;
+	hsl->l = lightness;
 
 	return hsl;
 }
-*/
+
 string Color::getStyle() {
-	return "rgb(" + ( ( this->r * 255 ) | 0 ) + "," + ( ( this->g * 255 ) | 0 ) + "," + ( ( this->b * 255 ) | 0 ) + ")";
+	ostringstream ss;
+	ss << "rgb(" << ((int)(this->r * 255.0f)) << "," << ((int)(this->g * 255.0f)) << "," << ((int)(this->b * 255.0f)) << ")";
+	return ss.str();
 }
 
 Color* Color::offsetHSL(float h, float s, float l) {
-	string hsl = this->getHSL();
-	hsl.h += h; hsl.s += s; hsl.l += l;
-	this->setHSL( hsl.h, hsl.s, hsl.l );
+	HSL* hsl = this->getHSL(nullptr);
+	hsl->h += h; hsl->s += s; hsl->l += l;
+	this->setHSL( hsl->h, hsl->s, hsl->l );
 	return this;
 }
 
@@ -368,4 +369,3 @@ Color::toJSON() {
 	return this->getHex();
 }
 */
-};

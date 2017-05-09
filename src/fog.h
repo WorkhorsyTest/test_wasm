@@ -12,9 +12,9 @@ public:
 	float near;
 	float far;
 
-	Fog(Color* color);
+	Fog(int color);
 
-	Fog(Color* color, float near, float far);
+	Fog(int color, float near, float far);
 
 	Fog* clone();
 /*

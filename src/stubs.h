@@ -11,7 +11,7 @@ public:
 
 class Object {
 public:
-	
+	Object* clone();
 };
 
 #endif // _STUBS_H_

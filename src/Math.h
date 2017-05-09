@@ -8,11 +8,13 @@ class Math {
 public:
 	static float Min(float a, float b) noexcept;
 
+	static float Min(float a, float b, float c) noexcept;
+
 	static float Max(float a, float b) noexcept;
 
-	static float Clamp(float value, float min, float max) noexcept;
-
 	static float Max(float a, float b, float c) noexcept;
+
+	static float Clamp(float value, float min, float max) noexcept;
 
 	static float Asin(float x) noexcept;
 

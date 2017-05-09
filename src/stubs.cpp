@@ -6,3 +6,7 @@
 long Date::Now() {
 	return 0;
 }
+
+Object* Object::clone() {
+	return nullptr;
+}
