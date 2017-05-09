@@ -4,7 +4,7 @@
 #include "Math.h"
 #include <math.h>
 
-float Math::PI = M_PI;
+const float Math::PI = M_PI;
 
 float Math::Min(float a, float b) noexcept {
 	return (a < b ? a : b);

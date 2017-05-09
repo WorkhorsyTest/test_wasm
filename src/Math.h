@@ -6,7 +6,7 @@
 
 class Math {
 public:
-	static float PI;
+	static const float PI;
 
 	static float Min(float a, float b) noexcept;
 
