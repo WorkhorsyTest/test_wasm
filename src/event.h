@@ -1,11 +1,15 @@
 #ifndef _EVENT_H_
 #define _EVENT_H_
 
-#include "three.h"
+//#include "three.h"
 
 
-class Event {
+struct Event {
 public:
+	Event(string type) {
+		this->type = type;
+	}
+
 	void* target;
 	string type;
 };

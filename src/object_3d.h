@@ -5,7 +5,7 @@
 #include "three.h"
 
 
-class Object3D {
+class Object3D : public EventDispatcher {
 public:
 	static Vector3* DefaultUp;
 	static bool DefaultMatrixAutoUpdate;

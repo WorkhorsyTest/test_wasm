@@ -20,7 +20,8 @@ Texture::Texture() :
 		LinearEncoding) {
 }
 
-Texture::Texture(Image* image, int mapping, int wrapS, int wrapT, int magFilter, int minFilter, int format, int type, int anisotropy, int encoding) {
+Texture::Texture(Image* image, int mapping, int wrapS, int wrapT, int magFilter, int minFilter, int format, int type, int anisotropy, int encoding)
+: EventDispatcher() {
 	this->id = textureId++;
 	this->uuid = Math::generateUUID();
 	this->name = "";
@@ -173,7 +174,7 @@ Texture::toJSON( meta ) {
 }
 */
 void Texture::dispose() {
-//		this->dispatchEvent( { type: 'dispose' } );
+		this->dispatchEvent( Event("dispose") );
 }
 
 void Texture::transformUv(Vector2* uv ) {

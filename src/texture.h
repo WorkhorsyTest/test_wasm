@@ -5,7 +5,7 @@
 #include "three.h"
 
 
-class Texture {
+class Texture : public EventDispatcher {
 public:
 	static long textureId;
 	static Image* DEFAULT_IMAGE;

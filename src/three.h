@@ -19,7 +19,7 @@ class Clock;
 class Color;
 class Date;
 class Euler;
-class Event;
+struct Event;
 class EventDispatcher;
 class Fog;
 class Matrix3;
@@ -32,12 +32,12 @@ class Object3D;
 class Image;
 class Texture;
 
-#include "Math.h"
-#include "stubs.h"
-#include "globals.h"
-
 #include "event.h"
 #include "event_dispatcher.h"
+#include "Math.h"
+
+#include "stubs.h"
+#include "globals.h"
 #include "clock.h"
 #include "color.h"
 #include "fog.h"

@@ -25,7 +25,7 @@ Matrix3* Object3D::normalMatrix() {
 	return this->_normalMatrix;
 }
 
-Object3D::Object3D() {
+Object3D::Object3D() : EventDispatcher() {
 	this->id = Object3D::object3DId++;
 
 	this->uuid = Math::generateUUID();
@@ -192,7 +192,7 @@ Object3D* Object3D::add(Object3D* object ) {
 		}
 
 		object->parent = this;
-//		object->dispatchEvent( { type: 'added' } );
+		object->dispatchEvent( Event("added") );
 
 		this->children.push_back( object );
 	} else {
@@ -217,7 +217,7 @@ void Object3D::remove(Object3D* object ) {
 	if (index != this->children.size()) {
 		object->parent = nullptr;
 
-//		object->dispatchEvent( { type: "removed" } );
+		object->dispatchEvent( Event("removed") );
 
 		this->children.erase(this->children.begin() + index);
 	}
