@@ -59,6 +59,7 @@ void EventDispatcher::dispatchEvent( Event* event ) {
 	}
 
 	auto v = listeners[event->type];
+	event->target = this;
 
 	vector<void (*)(Event*)> arr;
 	for (size_t i=0; i<v.size(); ++i) {
