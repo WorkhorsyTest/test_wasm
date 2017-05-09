@@ -1,4 +1,5 @@
 
+An experimental port of three.js to C++ (WebAssembly)
 
 # Build
 ```
