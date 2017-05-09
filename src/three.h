@@ -4,6 +4,7 @@
 #include <string>
 #include <stdlib.h>
 #include <vector>
+#include <map>
 #include <sstream>
 #include <typeinfo>
 #include <assert.h>
@@ -18,6 +19,8 @@ class Clock;
 class Color;
 class Date;
 class Euler;
+class Event;
+class EventDispatcher;
 class Fog;
 class Matrix3;
 class Matrix4;
@@ -33,6 +36,8 @@ class Texture;
 #include "stubs.h"
 #include "globals.h"
 
+#include "event.h"
+#include "event_dispatcher.h"
 #include "clock.h"
 #include "color.h"
 #include "fog.h"
