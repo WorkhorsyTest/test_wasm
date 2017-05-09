@@ -16,7 +16,7 @@ public:
 
 	Scene* copy(Scene* source, bool recursive );
 
-	//string toJSON( meta );
+	//std::string toJSON( meta );
 };
 
 #endif // _SCENE_H_

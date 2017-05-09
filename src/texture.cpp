@@ -75,7 +75,7 @@ Texture* Texture::copy(Texture* source ) {
 	this->name = source->name;
 
 	this->image = source->image;
-	this->mipmaps = vector<int>(source->mipmaps);
+	this->mipmaps = std::vector<int>(source->mipmaps);
 
 	this->mapping = source->mapping;
 

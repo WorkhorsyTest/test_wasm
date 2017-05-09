@@ -71,11 +71,11 @@ public:
 
 	bool equals(Quaternion* quaternion );
 
-	Quaternion* fromArray(vector<float> arr);
+	Quaternion* fromArray(std::vector<float> arr);
 
-	Quaternion* fromArray(vector<float> arr, int offset );
+	Quaternion* fromArray(std::vector<float> arr, int offset );
 
-	vector<float> toArray(vector<float> arr, int offset );
+	std::vector<float> toArray(std::vector<float> arr, int offset );
 /*
 	Quaternion* onChange( callback );
 */

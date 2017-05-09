@@ -26,8 +26,8 @@ Scene* Scene::copy(Scene* source, bool recursive ) {
 	return this;
 }
 /*
-string Scene::toJSON( meta ) {
-	string data = Object3D::toJSON( meta );
+std::string Scene::toJSON( meta ) {
+	std::string data = Object3D::toJSON( meta );
 
 	if ( this->background != nullptr ) data.object.background = this->background.toJSON( meta );
 	if ( this->fog != nullptr ) data.object.fog = this->fog.toJSON();

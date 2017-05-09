@@ -46,11 +46,11 @@ public:
 
 	static int EuclideanModulo(int n, int m);
 
-	static bool IsInteger(const string & s);
+	static bool IsInteger(const std::string & s);
 
-	static bool IsFloat(const string &s);
+	static bool IsFloat(const std::string &s);
 
-	static string generateUUID();
+	static std::string generateUUID();
 };
 
 #endif // _MY_MATH_H_

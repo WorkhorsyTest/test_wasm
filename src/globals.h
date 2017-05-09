@@ -2,7 +2,7 @@
 #ifndef _GLOBALS_H_
 #define _GLOBALS_H_
 
-const string REVISION = "85";
+const std::string REVISION = "85";
 //const int MOUSE = { LEFT: 0, MIDDLE: 1, RIGHT: 2 };
 const int CullFaceNone = 0;
 const int CullFaceBack = 1;

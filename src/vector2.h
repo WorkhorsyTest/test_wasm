@@ -103,9 +103,9 @@ public:
 
 	bool equals(Vector2* v );
 
-	Vector2* fromArray(vector<float> array, int offset );
+	Vector2* fromArray(std::vector<float> array, int offset );
 
-	vector<float> toArray(vector<float> array, int offset );
+	std::vector<float> toArray(std::vector<float> array, int offset );
 /*
 	Vector2* fromBufferAttribute(BufferAttribute* attribute, int index);
 */

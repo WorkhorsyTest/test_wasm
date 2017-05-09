@@ -82,24 +82,24 @@ int Math::EuclideanModulo(int n, int m) {
 	return ( ( n % m ) + m ) % m;
 }
 
-bool Math::IsInteger(const string &s) {
+bool Math::IsInteger(const std::string &s) {
 	if(s.empty() || ((!isdigit(s[0])) && (s[0] != '-') && (s[0] != '+'))) return false;
 	char * p ;
 	strtol(s.c_str(), &p, 10);
 	return (*p == 0);
 }
 
-bool Math::IsFloat(const string &s) {
+bool Math::IsFloat(const std::string &s) {
 	std::istringstream iss(s);
 	float f;
-	iss >> noskipws >> f; // noskipws considers leading whitespace invalid
+	iss >> std::noskipws >> f; // noskipws considers leading whitespace invalid
 	// Check the entire string was consumed and if either failbit or badbit is set
 	return iss.eof() && !iss.fail();
 }
 
-string Math::generateUUID() {
+std::string Math::generateUUID() {
 	// http://www.broofa.com/Tools/Math.uuid.htm
-	const string chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+	const std::string chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 	char uuid[36];
 	int rnd = 0;
 	int r = 0;
@@ -116,5 +116,5 @@ string Math::generateUUID() {
 			uuid[ i ] = chars[ ( i == 19 ) ? ( r & 0x3 ) | 0x8 : r ];
 		}
 	}
-	return string(uuid);
+	return std::string(uuid);
 }

@@ -7,7 +7,7 @@
 class Fog {
 public:
 	bool isFog;
-	string name;
+	std::string name;
 	Color* color;
 	float near;
 	float far;
@@ -18,7 +18,7 @@ public:
 
 	Fog* clone();
 /*
-	string toJSON( meta );
+	std::string toJSON( meta );
 */
 };
 

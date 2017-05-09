@@ -10,14 +10,14 @@ public:
 	float _x;
 	float _y;
 	float _z;
-	string _order;
+	std::string _order;
 	bool isEuler = true;
 
-	static const string DefaultOrder;
+	static const std::string DefaultOrder;
 
-	static const string RotationOrders[];
+	static const std::string RotationOrders[];
 
-	Euler(float x, float y, float z, string order);
+	Euler(float x, float y, float z, std::string order);
 
 	Euler();
 
@@ -33,31 +33,31 @@ public:
 
 	void z(float value );
 
-	string order();
+	std::string order();
 
-	void order(string value );
+	void order(std::string value );
 
-	Euler* set(float x, float y, float z, string order );
+	Euler* set(float x, float y, float z, std::string order );
 
 	Euler* clone();
 
 	Euler* copy(Euler* euler );
 
-	Euler* setFromRotationMatrix(Matrix4* m, string order, bool update );
+	Euler* setFromRotationMatrix(Matrix4* m, std::string order, bool update );
 
-	Euler* setFromQuaternion(Quaternion* q, string order);
+	Euler* setFromQuaternion(Quaternion* q, std::string order);
 
-	Euler* setFromQuaternion(Quaternion* q, string order, bool update );
+	Euler* setFromQuaternion(Quaternion* q, std::string order, bool update );
 
-	Euler* setFromVector3(Vector3* v, string order );
+	Euler* setFromVector3(Vector3* v, std::string order );
 
-	Euler* reorder(string newOrder);
+	Euler* reorder(std::string newOrder);
 
 	bool equals(Euler* euler );
 
-	Euler* fromArray(vector<float> arr);
+	Euler* fromArray(std::vector<float> arr);
 
-	vector<float> toArray(vector<float> arr, int offset );
+	std::vector<float> toArray(std::vector<float> arr, int offset );
 
 	Vector3* toVector3(Vector3* optionalResult );
 /*

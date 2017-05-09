@@ -6,12 +6,12 @@
 
 struct Event {
 public:
-	Event(string type) {
+	Event(std::string type) {
 		this->type = type;
 	}
 
 	void* target;
-	string type;
+	std::string type;
 };
 
 

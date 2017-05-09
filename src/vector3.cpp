@@ -543,7 +543,7 @@
 		return ( ( v->x == this->x ) && ( v->y == this->y ) && ( v->z == this->z ) );
 	}
 
-	Vector3* Vector3::fromArray(vector<float> arr, int offset ) {
+	Vector3* Vector3::fromArray(std::vector<float> arr, int offset ) {
 //		if ( offset == nullptr ) offset = 0;
 
 		this->x = arr[ offset ];
@@ -553,7 +553,7 @@
 		return this;
 	}
 
-	vector<float> Vector3::toArray(vector<float> arr, int offset ) {
+	std::vector<float> Vector3::toArray(std::vector<float> arr, int offset ) {
 //		if ( arr == nullptr ) arr = {};
 //		if ( offset == nullptr ) offset = 0;
 

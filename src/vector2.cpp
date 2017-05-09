@@ -268,14 +268,14 @@ bool Vector2::equals(Vector2* v ) {
 	return ( ( v->x == this->x ) && ( v->y == this->y ) );
 }
 
-Vector2* Vector2::fromArray(vector<float> array, int offset ) {
+Vector2* Vector2::fromArray(std::vector<float> array, int offset ) {
 //		if ( offset == undefined ) offset = 0;
 	this->x = array[ offset ];
 	this->y = array[ offset + 1 ];
 	return this;
 }
 
-vector<float> Vector2::toArray(vector<float> array, int offset ) {
+std::vector<float> Vector2::toArray(std::vector<float> array, int offset ) {
 //		if ( array == undefined ) array = [];
 //		if ( offset == undefined ) offset = 0;
 

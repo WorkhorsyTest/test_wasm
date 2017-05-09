@@ -6,13 +6,13 @@
 
 class EventDispatcher {
 public:
-	map<string, vector<void (*)(Event)>> _listeners;
+	std::map<std::string, std::vector<void (*)(Event)>> _listeners;
 
-	void addEventListener(string type, void (*listener)(Event));
+	void addEventListener(std::string type, void (*listener)(Event));
 
-	bool hasEventListener(string type, void (*listener)(Event));
+	bool hasEventListener(std::string type, void (*listener)(Event));
 
-	void removeEventListener(string type, void (*listener)(Event));
+	void removeEventListener(std::string type, void (*listener)(Event));
 
 	void dispatchEvent( Event event );
 };

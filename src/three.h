@@ -1,4 +1,5 @@
 
+//namespace THREE {
 
 #include <stdio.h>
 #include <string>
@@ -10,8 +11,6 @@
 #include <assert.h>
 #include <array>
 #include <regex>
-
-using namespace std;
 
 class Object;
 
@@ -50,3 +49,5 @@ class Texture;
 #include "scene.h"
 #include "texture.h"
 #include "object_3d.h"
+
+//};

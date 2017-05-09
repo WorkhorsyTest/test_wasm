@@ -1,11 +1,11 @@
 
 #include "three.h"
 
-const string Euler::DefaultOrder = "XYZ";
+const std::string Euler::DefaultOrder = "XYZ";
 
-const string Euler::RotationOrders[] = { "XYZ", "YZX", "ZXY", "XZY", "YXZ", "ZYX" };
+const std::string Euler::RotationOrders[] = { "XYZ", "YZX", "ZXY", "XZY", "YXZ", "ZYX" };
 
-	Euler::Euler(float x, float y, float z, string order) {
+	Euler::Euler(float x, float y, float z, std::string order) {
 		this->_x = x;
 		this->_y = y;
 		this->_z = z;
@@ -46,16 +46,16 @@ const string Euler::RotationOrders[] = { "XYZ", "YZX", "ZXY", "XZY", "YXZ", "ZYX
 		this->onChangeCallback();
 	}
 
-	string Euler::order() {
+	std::string Euler::order() {
 		return this->_order;
 	}
 
-	void Euler::order(string value ) {
+	void Euler::order(std::string value ) {
 		this->_order = value;
 		this->onChangeCallback();
 	}
 
-	Euler* Euler::set(float x, float y, float z, string order ) {
+	Euler* Euler::set(float x, float y, float z, std::string order ) {
 		this->_x = x;
 		this->_y = y;
 		this->_z = z;
@@ -81,7 +81,7 @@ const string Euler::RotationOrders[] = { "XYZ", "YZX", "ZXY", "XZY", "YXZ", "ZYX
 		return this;
 	}
 
-	Euler* Euler::setFromRotationMatrix(Matrix4* m, string order, bool update ) {
+	Euler* Euler::setFromRotationMatrix(Matrix4* m, std::string order, bool update ) {
 		// assumes the upper 3x3 of m is a pure rotation matrix (i.e, unscaled)
 
 		auto te = m->elements;
@@ -165,22 +165,22 @@ const string Euler::RotationOrders[] = { "XYZ", "YZX", "ZXY", "XZY", "YXZ", "ZYX
 		return this;
 	}
 
-	Euler* Euler::setFromQuaternion(Quaternion* q, string order) {
+	Euler* Euler::setFromQuaternion(Quaternion* q, std::string order) {
 		return this->setFromQuaternion(q, order, false);
 	}
 
-	Euler* Euler::setFromQuaternion(Quaternion* q, string order, bool update ) {
+	Euler* Euler::setFromQuaternion(Quaternion* q, std::string order, bool update ) {
 		auto matrix = new Matrix4();
 		matrix->makeRotationFromQuaternion( q );
 		return this->setFromRotationMatrix( matrix, order, update );
 	}
 
-	Euler* Euler::setFromVector3(Vector3* v, string order ) {
+	Euler* Euler::setFromVector3(Vector3* v, std::string order ) {
 		if (order != "") order = this->_order;
 		return this->set(v->x, v->y, v->z, order);
 	}
 
-	Euler* Euler::reorder(string newOrder) {
+	Euler* Euler::reorder(std::string newOrder) {
 		// WARNING: this discards revolution information -bhouston
 		auto q = new Quaternion();
 		q->setFromEuler( this );
@@ -195,7 +195,7 @@ const string Euler::RotationOrders[] = { "XYZ", "YZX", "ZXY", "XZY", "YXZ", "ZYX
 		( euler->_order == this->_order );
 	}
 
-	Euler* Euler::fromArray(vector<float> arr) {
+	Euler* Euler::fromArray(std::vector<float> arr) {
 		this->_x = arr[ 0 ];
 		this->_y = arr[ 1 ];
 		this->_z = arr[ 2 ];
@@ -206,7 +206,7 @@ const string Euler::RotationOrders[] = { "XYZ", "YZX", "ZXY", "XZY", "YXZ", "ZYX
 		return this;
 	}
 
-	vector<float> Euler::toArray(vector<float> arr, int offset ) {
+	std::vector<float> Euler::toArray(std::vector<float> arr, int offset ) {
 //		if ( arr == nullptr ) arr = {};
 //		if ( offset == nullptr ) offset = 0;
 

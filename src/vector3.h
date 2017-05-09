@@ -138,9 +138,9 @@ public:
 
 	bool equals(Vector3* v );
 
-	Vector3* fromArray(vector<float> arr, int offset );
+	Vector3* fromArray(std::vector<float> arr, int offset );
 
-	vector<float> toArray(vector<float> arr, int offset );
+	std::vector<float> toArray(std::vector<float> arr, int offset );
 /*
 	Vector3* fromAttribute( attribute, int index, int offset );
 */

@@ -13,11 +13,11 @@ public:
 
 	bool isObject3D = true;
 	int id;
-	string uuid;
-	string name;
-	string type;
+	std::string uuid;
+	std::string name;
+	std::string type;
 	Object3D* parent;
-	vector<Object3D*> children;
+	std::vector<Object3D*> children;
 	Vector3* up;
 
 	Vector3* _position;
@@ -42,7 +42,7 @@ public:
 	bool frustumCulled;
 	int renderOrder;
 
-	string userData;
+	std::string userData;
 
 	//this->onBeforeRender = function () {};
 	//this->onAfterRender = function () {};
@@ -94,9 +94,9 @@ public:
 
 	Object3D* getObjectById(int id );
 
-	Object3D* getObjectByName(string name );
+	Object3D* getObjectByName(std::string name );
 
-	Object3D* getObjectByProperty(string name, string value );
+	Object3D* getObjectByProperty(std::string name, std::string value );
 
 	Vector3* getWorldPosition(Vector3* optionalTarget );
 

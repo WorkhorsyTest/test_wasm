@@ -714,11 +714,11 @@ bool Matrix4::equals(Matrix4* matrix) {
 	return true;
 }
 
-Matrix4* Matrix4::fromArray(vector<float> &array) {
+Matrix4* Matrix4::fromArray(std::vector<float> &array) {
 	return this->fromArray(array, 0);
 }
 
-Matrix4* Matrix4::fromArray(vector<float> &array, int offset) {
+Matrix4* Matrix4::fromArray(std::vector<float> &array, int offset) {
 	for ( int i = 0; i < 16; i ++) {
 		this->elements[ i ] = array[ i + offset ];
 	}
@@ -726,7 +726,7 @@ Matrix4* Matrix4::fromArray(vector<float> &array, int offset) {
 	return this;
 }
 
-vector<float> Matrix4::toArray(vector<float> &array, int offset) {
+std::vector<float> Matrix4::toArray(std::vector<float> &array, int offset) {
 	//if ( array == nullptr ) array = {};
 	//if ( offset == nullptr ) offset = 0;
 

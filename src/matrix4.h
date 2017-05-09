@@ -78,14 +78,14 @@ public:
 
 	bool equals(Matrix4* matrix);
 
-	Matrix4* fromArray(vector<float> &array);
+	Matrix4* fromArray(std::vector<float> &array);
 
-	Matrix4* fromArray(vector<float> &array, int offset);
+	Matrix4* fromArray(std::vector<float> &array, int offset);
 
-	vector<float> toArray(vector<float> &array, int offset);
+	std::vector<float> toArray(std::vector<float> &array, int offset);
 
 	bool isMatrix4 = true;
-	vector<float> elements;
+	std::vector<float> elements;
 };
 
 #endif // _MATRIX4_H_

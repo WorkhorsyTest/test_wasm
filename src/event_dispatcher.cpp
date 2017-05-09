@@ -3,7 +3,7 @@
 #include "three.h"
 
 
-void EventDispatcher::addEventListener(string type, void (*listener)(Event)) {
+void EventDispatcher::addEventListener(std::string type, void (*listener)(Event)) {
 //		if ( this->_listeners == nullptr ) this->_listeners = {};
 
 	auto listeners = this->_listeners;
@@ -19,7 +19,7 @@ void EventDispatcher::addEventListener(string type, void (*listener)(Event)) {
 	}
 }
 
-bool EventDispatcher::hasEventListener(string type, void (*listener)(Event)) {
+bool EventDispatcher::hasEventListener(std::string type, void (*listener)(Event)) {
 //		if ( this->_listeners == nullptr ) return false;
 
 	auto listeners = this->_listeners;
@@ -33,7 +33,7 @@ bool EventDispatcher::hasEventListener(string type, void (*listener)(Event)) {
 	return (std::find(v.begin(), v.end(), listener) != v.end());
 }
 
-void EventDispatcher::removeEventListener(string type, void (*listener)(Event)) {
+void EventDispatcher::removeEventListener(std::string type, void (*listener)(Event)) {
 //		if ( this->_listeners == nullptr ) return;
 
 	auto listeners = this->_listeners;
@@ -61,7 +61,7 @@ void EventDispatcher::dispatchEvent( Event event ) {
 	auto v = listeners[event.type];
 	event.target = this;
 
-	vector<void (*)(Event)> arr;
+	std::vector<void (*)(Event)> arr;
 	for (size_t i=0; i<v.size(); ++i) {
 		arr.push_back(v[i]);
 	}

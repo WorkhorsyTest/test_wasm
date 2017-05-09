@@ -46,7 +46,7 @@ public:
 
 	static float hue2rgb(float p, float q, float t);
 
-	static void handleAlpha(string value);
+	static void handleAlpha(std::string value);
 
 	Color(float r, float g, float b);
 
@@ -56,7 +56,7 @@ public:
 
 	Color* set(int value );
 
-	Color* set(string value );
+	Color* set(std::string value );
 
 	Color* setScalar(float scalar );
 
@@ -66,7 +66,7 @@ public:
 
 	Color* setHSL(float h, float s, float l);
 
-	Color* setStyle(string style );
+	Color* setStyle(std::string style );
 
 	Color* clone();
 
@@ -82,11 +82,11 @@ public:
 
 	int getHex();
 
-	string getHexString();
+	std::string getHexString();
 
 	HSL* getHSL(HSL* optionalTarget );
 
-	string getStyle();
+	std::string getStyle();
 
 	Color* offsetHSL(float h, float s, float l);
 
@@ -106,9 +106,9 @@ public:
 
 	bool equals(Color* c );
 
-	Color* fromArray(vector<float> array, int offset);
+	Color* fromArray(std::vector<float> array, int offset);
 
-	vector<float> toArray(vector<float> array, int offset );
+	std::vector<float> toArray(std::vector<float> array, int offset );
 /*
 	toJSON();
 */

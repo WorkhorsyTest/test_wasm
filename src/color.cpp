@@ -11,7 +11,7 @@ float Color::hue2rgb(float p, float q, float t) {
 	return p;
 }
 
-void Color::handleAlpha(string value) {
+void Color::handleAlpha(std::string value) {
 	if (value == "") return;
 
 	if (Math::IsFloat(value)) {
@@ -38,7 +38,7 @@ Color* Color::set(int value ) {
 	return this;
 }
 
-Color* Color::set(string value ) {
+Color* Color::set(std::string value ) {
 	this->setStyle( value );
 	return this;
 }
@@ -89,9 +89,9 @@ Color* Color::setHSL(float h, float s, float l) {
 	return this;
 }
 
-Color* Color::setStyle(string style ) {
+Color* Color::setStyle(std::string style ) {
 /*
-	string m;
+	std::string m;
 
 	if ( m = /^((?:rgb|hsl)a?)\(\s*([^\)]*)\)/.exec( style ) ) {
 		// rgb / hsl
@@ -232,8 +232,8 @@ int Color::getHex() {
 	return ((int)(this->r * 255.0f)) << 16 ^ ((int)(this->g * 255.0f)) << 8 ^ ((int)(this->b * 255.0f)) << 0;
 }
 
-string Color::getHexString() {
-	stringstream ss;
+std::string Color::getHexString() {
+	std::stringstream ss;
 	ss << std::hex << this->getHex();
 	return ss.str();
 }
@@ -273,8 +273,8 @@ HSL* Color::getHSL(HSL* optionalTarget ) {
 	return hsl;
 }
 
-string Color::getStyle() {
-	ostringstream ss;
+std::string Color::getStyle() {
+	std::ostringstream ss;
 	ss << "rgb(" << ((int)(this->r * 255.0f)) << "," << ((int)(this->g * 255.0f)) << "," << ((int)(this->b * 255.0f)) << ")";
 	return ss.str();
 }
@@ -346,7 +346,7 @@ bool Color::equals(Color* c ) {
 	return ( c->r == this->r ) && ( c->g == this->g ) && ( c->b == this->b );
 }
 
-Color* Color::fromArray(vector<float> array, int offset) {
+Color* Color::fromArray(std::vector<float> array, int offset) {
 //			if ( offset == undefined ) offset = 0;
 
 	this->r = array[ offset ];
@@ -356,7 +356,7 @@ Color* Color::fromArray(vector<float> array, int offset) {
 	return this;
 }
 
-vector<float> Color::toArray(vector<float> array, int offset ) {
+std::vector<float> Color::toArray(std::vector<float> array, int offset ) {
 //			if ( array == undefined ) array = [];
 //			if ( offset == undefined ) offset = 0;
 

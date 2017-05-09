@@ -19,7 +19,7 @@ Fog* Fog::clone() {
 	return new Fog(this->color->getHex(), this->near, this->far);
 }
 /*
-string Fog::toJSON( meta ) {
+std::string Fog::toJSON( meta ) {
 	return {
 		type: 'Fog',
 		color: this->color.getHex(),

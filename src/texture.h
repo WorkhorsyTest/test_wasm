@@ -12,10 +12,10 @@ public:
 	static int DEFAULT_MAPPING;
 	bool _value;
 	long id;
-	string uuid;
-	string name;
+	std::string uuid;
+	std::string name;
 	Image* image;
-	vector<int> mipmaps;
+	std::vector<int> mipmaps;
 	int mapping;
 	int wrapS;
 	int wrapT;

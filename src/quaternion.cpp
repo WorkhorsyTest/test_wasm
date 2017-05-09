@@ -431,11 +431,11 @@ const int EPSILON = Math::Pow( 2, - 52 );
 		return ( quaternion->_x == this->_x ) && ( quaternion->_y == this->_y ) && ( quaternion->_z == this->_z ) && ( quaternion->_w == this->_w );
 	}
 
-	Quaternion* Quaternion::fromArray(vector<float> arr) {
+	Quaternion* Quaternion::fromArray(std::vector<float> arr) {
 		return this->fromArray(arr, 0);
 	}
 
-	Quaternion* Quaternion::fromArray(vector<float> arr, int offset ) {
+	Quaternion* Quaternion::fromArray(std::vector<float> arr, int offset ) {
 		this->_x = arr[ offset ];
 		this->_y = arr[ offset + 1 ];
 		this->_z = arr[ offset + 2 ];
@@ -446,7 +446,7 @@ const int EPSILON = Math::Pow( 2, - 52 );
 		return this;
 	}
 
-	vector<float> Quaternion::toArray(vector<float> arr, int offset ) {
+	std::vector<float> Quaternion::toArray(std::vector<float> arr, int offset ) {
 //		if ( arr == nullptr ) arr = {};
 //		if ( offset == nullptr ) offset = 0;
 

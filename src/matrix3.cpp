@@ -205,7 +205,7 @@
 		return this->setFromMatrix4( matrix4 )->getInverse( this )->transpose();
 	}
 
-	Matrix3* Matrix3::transposeIntoArray(vector<float> &r) {
+	Matrix3* Matrix3::transposeIntoArray(std::vector<float> &r) {
 		auto m = this->elements;
 
 		r[ 0 ] = m[ 0 ];
@@ -232,11 +232,11 @@
 		return true;
 	}
 
-	Matrix3* Matrix3::fromArray(vector<float> arr) {
+	Matrix3* Matrix3::fromArray(std::vector<float> arr) {
 		return this->fromArray(arr, 0);
 	}
 
-	Matrix3* Matrix3::fromArray(vector<float> arr, int offset) {
+	Matrix3* Matrix3::fromArray(std::vector<float> arr, int offset) {
 		for ( int i = 0; i < 9; i ++ ) {
 			this->elements[ i ] = arr[ i + offset ];
 		}
@@ -244,7 +244,7 @@
 		return this;
 	}
 
-	vector<float> Matrix3::toArray(vector<float> arr, int offset) {
+	std::vector<float> Matrix3::toArray(std::vector<float> arr, int offset) {
 		//if ( arr == nullptr ) arr = {};
 		//if ( offset == nullptr ) offset = 0;
 

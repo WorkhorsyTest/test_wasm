@@ -6,7 +6,7 @@
 
 class Matrix3 {
 public:
-	vector<float> elements;
+	std::vector<float> elements;
 	bool isMatrix3 = true;
 
 	Matrix3();
@@ -41,15 +41,15 @@ public:
 
 	Matrix3* getNormalMatrix(Matrix4* matrix4 );
 
-	Matrix3* transposeIntoArray(vector<float> &r);
+	Matrix3* transposeIntoArray(std::vector<float> &r);
 
 	bool equals(Matrix3* matrix );
 
-	Matrix3* fromArray(vector<float> arr);
+	Matrix3* fromArray(std::vector<float> arr);
 
-	Matrix3* fromArray(vector<float> arr, int offset);
+	Matrix3* fromArray(std::vector<float> arr, int offset);
 
-	vector<float> toArray(vector<float> arr, int offset);
+	std::vector<float> toArray(std::vector<float> arr, int offset);
 };
 
 #endif // _MATRIX3_H_

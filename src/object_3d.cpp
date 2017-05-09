@@ -227,11 +227,11 @@ Object3D* Object3D::getObjectById(int id ) {
 	return this->getObjectByProperty( "id", id );
 }
 
-Object3D* Object3D::getObjectByName(string name ) {
+Object3D* Object3D::getObjectByName(std::string name ) {
 	return this->getObjectByProperty( "name", name );
 }
 
-Object3D* Object3D::getObjectByProperty(string name, string value ) {
+Object3D* Object3D::getObjectByProperty(std::string name, std::string value ) {
 	if ( this[ name ] == value ) return this;
 
 	for ( auto i = 0, l = this->children.length; i < l; i ++ ) {
