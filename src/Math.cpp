@@ -4,6 +4,8 @@
 #include "Math.h"
 #include <math.h>
 
+float Math::PI = M_PI;
+
 float Math::Min(float a, float b) noexcept {
 	return (a < b ? a : b);
 }
@@ -23,7 +25,6 @@ float Math::Max(float a, float b, float c) noexcept {
 float Math::Clamp(float value, float min, float max) noexcept {
 	return Max(min, Min(max, value));
 }
-
 
 float Math::Asin(float x) noexcept {
 	return asin(x);

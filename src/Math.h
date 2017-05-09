@@ -6,6 +6,8 @@
 
 class Math {
 public:
+	static float PI;
+
 	static float Min(float a, float b) noexcept;
 
 	static float Min(float a, float b, float c) noexcept;

@@ -22,6 +22,7 @@ class Fog;
 class Matrix3;
 class Matrix4;
 class Quaternion;
+class Vector2;
 class Vector3;
 class Scene;
 class Object3D;
@@ -34,6 +35,7 @@ class Object3D;
 #include "fog.h"
 #include "matrix3.h"
 #include "matrix4.h"
+#include "vector2.h"
 #include "vector3.h"
 #include "quaternion.h"
 #include "euler.h"
